@@ -1,7 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/utilities/fetch.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  var password = TextEditingController();
+  var user = TextEditingController();
   Widget build(BuildContext context) {
     return (Scaffold(
         appBar: AppBar(
@@ -28,6 +35,7 @@ class Login extends StatelessWidget {
               SizedBox(
                   width: 300,
                   child: TextFormField(
+                    controller: user,
                     decoration: const InputDecoration(
                       icon: Icon(Icons.person),
                       hintText: 'Please, enter your username',
@@ -37,6 +45,7 @@ class Login extends StatelessWidget {
               SizedBox(
                   width: 300,
                   child: TextFormField(
+                    controller: password,
                     obscureText: true,
                     decoration: const InputDecoration(
                       icon: Icon(Icons.person),
@@ -50,7 +59,7 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 30, left: 20),
                     child: FloatingActionButton.extended(
                         onPressed: () {
-                          print("hello");
+                          fetchData(password.text, user.text);
                         },
                         icon: Icon(Icons.login_rounded),
                         label: Text("Login"))),
