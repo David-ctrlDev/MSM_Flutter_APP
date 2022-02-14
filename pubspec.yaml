@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http:
+  http: 
+  
+  flutter_easyloading: ^3.0.3
 
 
 

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+//import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/fetch.dart';
 
 class Login extends StatefulWidget {
@@ -9,8 +11,11 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   var password = TextEditingController();
   var user = TextEditingController();
+  
+
   Widget build(BuildContext context) {
     return (Scaffold(
+      
         appBar: AppBar(
           centerTitle: true,
           title: Text("MSM_SUITE"),
@@ -58,14 +63,22 @@ class _LoginState extends State<Login> {
                 child: Padding(
                     padding: const EdgeInsets.only(top: 30, left: 20),
                     child: FloatingActionButton.extended(
-                        onPressed: () {
-                          fetchData(password.text, user.text);
-                        },
+                        onPressed: () async{
+                          await EasyLoading.show(status:"Login");
+                          var data = await loginFetchData(password.text, user.text);
+                          EasyLoading.dismiss(animation: false);
+                          print(data.codigoUsuario);
+                        
+                       //loginFetchData(password.text, user.text);
+                       //print(loginFetchData);
+                      }, label: Text("Login"),
                         icon: Icon(Icons.login_rounded),
-                        label: Text("Login"))),
+                        
               )
-            ],
+                ))],
           ),
-        )));
+          
+        ),)
+        );
   }
 }
