@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:msm_mobile_app/pages/homePage.dart';
 //import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/fetch.dart';
 
@@ -67,7 +68,12 @@ class _LoginState extends State<Login> {
                           await EasyLoading.show(status:"Login");
                           var data = await loginFetchData(password.text, user.text);
                           EasyLoading.dismiss(animation: false);
-                          print(data.codigoUsuario);
+                         if (data == null){
+                           EasyLoading.dismiss();
+                         }
+                         if (data != null ){
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(data:data ,),));
+                         }
                         
                        //loginFetchData(password.text, user.text);
                        //print(loginFetchData);
