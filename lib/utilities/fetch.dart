@@ -19,6 +19,7 @@ Future <User?>loginFetchData(password, user) async {
     final responseData = User.fromJson(body);
     return responseData;}
   else{
-    throw Exception("No se encontró usuario");
+    final responseData = null;
+    return responseData;
   }
 }
