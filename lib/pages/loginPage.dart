@@ -70,7 +70,26 @@ class _LoginState extends State<Login> {
                           EasyLoading.dismiss(animation: false);
                          if (data == null){
                            EasyLoading.dismiss();
+                           showModalBottomSheet(
+                           context: context,
+                           builder:(BuildContext context){
+                            return Container(
+                                            height: 200,
+                                            color: Colors.amber,
+                                            child: Center(
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  const Text('Modal BottomSheet')
+                                                ]
+                                              )
+                                            )
+                            );            
                          }
+                           );
+                        }
+                        
                          if (data != null ){
                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(data:data ,),));
                          }
