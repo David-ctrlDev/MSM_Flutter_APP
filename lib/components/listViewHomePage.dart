@@ -16,20 +16,54 @@ GridView myGridView(context) {
       // Generate 100 widgets that display their index in the List.
       children: [
         Card(
+            elevation: 10,
+            margin: EdgeInsets.all(15),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: ListTile(
-          title: Text("Viáticos"),
-        )),
+              title: Text("Viáticos"),
+            )),
         Card(
-            child: ListTile(
-          title: Text("Viáticos"),
-        )),
+            elevation: 10,
+            margin: EdgeInsets.all(15),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    "Viáticos",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Container(
+                      child: Column(children: [
+                    Text(
+                      "Registra bonificaciones y legalizaciones",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Image.asset(
+                      'assets/images/viaticosImage.png',
+                      width: 70,
+                    ),
+                  ])),
+                )
+              ],
+            )),
         Card(
+            elevation: 10,
+            margin: EdgeInsets.all(15),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: ListTile(
-          title: Text("Viáticos"),
-        )),
+              title: Text("Viáticos"),
+            )),
         Card(
+            elevation: 10,
+            margin: EdgeInsets.all(15),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: ListTile(
-          title: Text("Viáticos"),
-        ))
+              title: Text("Viáticos"),
+            ))
       ]));
 }
