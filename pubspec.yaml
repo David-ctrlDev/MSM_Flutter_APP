@@ -26,6 +26,7 @@ dependencies:
   http: 
   
   flutter_easyloading: ^3.0.3
+  persistent_bottom_nav_bar: any
 
 
 
@@ -56,6 +57,13 @@ flutter:
       - assets/images/loginImage2.png
       - assets/images/mvtellogo.png
       - assets/images/viaticosImage.png
+      - assets/images/growListImage.png
+      - assets/images/metricsListImage .png
+      - assets/images/planificationListImage.png
+      - assets/images/nomina.png
+      - assets/images/prestamos.png
+      - assets/images/learnImage.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

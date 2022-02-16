@@ -63,7 +63,67 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        Row(children: [
+        
+        Container(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+            height: 150,
+            width: 400,
+            child: ListView(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  
+                  child:Card(
+                    elevation: 3,
+                    child:Column(children: [
+                    Text('Planifica y proyecta!'),
+                    Image.asset('assets/images/planificationListImage.png',width: 90,)
+                  ],),),
+                  width: 180.0,
+                ),
+                Container(
+                 child:Card(
+                    elevation: 3,
+                    child:Column(children: [
+                    Text('Mide y toma decisiones!'),
+                    Image.asset('assets/images/metricsListImage .png',width: 90,)
+                  ],),),
+                  width: 180.0,
+                ),
+                Container(
+                  child:Card(
+                    elevation: 3,
+                    child:Column(children: [
+                    Text('Ahorra y crece!'),
+                    Image.asset('assets/images/growListImage.png',width: 70,)
+                  ],),),
+                  width: 180.0,
+                ),
+                Container(
+                  
+                  child:Card(
+                    elevation: 3,
+                    child:Column(children: [
+                    Text('Planifica y proyecta!'),
+                    Image.asset('assets/images/planificationListImage.png',width: 90,)
+                  ],),),
+                  width: 180.0,
+                  
+                ),
+                Container(
+                  child:Card(
+                    elevation: 3,
+                    child:Column(children: [
+                    Text('Planifica y proyecta!'),
+                    Image.asset('assets/images/planificationListImage.png',width: 90,)
+                  ],),),
+                  width: 180.0,
+                ),
+              ],
+            )),
+            Row(children: [
           Padding(padding: EdgeInsets.fromLTRB(20, 40, 20, 0)),
           Text(
             "Servicios",
@@ -73,36 +133,6 @@ class HomePage extends StatelessWidget {
                 fontFamily: 'Helvetica'),
           )
         ]),
-        Container(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-            height: 150,
-            width: 400,
-            child: ListView(
-              // This next line does the trick.
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
-                  width: 160.0,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: 160.0,
-                  color: Colors.blue,
-                ),
-                Container(
-                  width: 160.0,
-                  color: Colors.green,
-                ),
-                Container(
-                  width: 160.0,
-                  color: Colors.yellow,
-                ),
-                Container(
-                  width: 160.0,
-                  color: Colors.orange,
-                ),
-              ],
-            )),
         Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           height: 500,
