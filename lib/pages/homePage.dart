@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
         ]),
         Container(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-            height: 200,
+            height: 150,
             width: 400,
             child: ListView(
               // This next line does the trick.

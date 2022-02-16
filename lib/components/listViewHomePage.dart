@@ -39,7 +39,8 @@ GridView myGridView(context) {
                       child: Column(children: [
                     Text(
                       "Registra bonificaciones y legalizaciones",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Image.asset(
                       'assets/images/viaticosImage.png',
