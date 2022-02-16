@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/pages/travelExpenses/travelExpensesMenu.dart';
+
 
 class ListviewHome extends StatelessWidget {
   @override
@@ -23,6 +25,10 @@ GridView myGridView(context) {
             child: Column(
               children: [
                 ListTile(
+                  onTap:()=> Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TravelExpensesMenu(),),),
                   title: Text(
                     "Viáticos",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -30,7 +36,7 @@ GridView myGridView(context) {
                   subtitle: Container(
                       child: Column(children: [
                     Text(
-                      "Registra bonificaciones y legalizaciones",
+                      "Bonificaciones y legalizaciones",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
@@ -43,11 +49,13 @@ GridView myGridView(context) {
               ],
             )),
         Card(
+          
             elevation: 10,
             margin: EdgeInsets.all(15),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Column(
+              
               children: [
                 ListTile(
                   title: Text(
@@ -120,7 +128,8 @@ GridView myGridView(context) {
                       width: 70,
                     ),
                   ])),
-                )
+                ),
+          
               ],
             )),
       ]));

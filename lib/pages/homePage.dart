@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/listViewHomePage.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
@@ -20,6 +21,9 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: kPrimaryColor,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: DraggableButton(),
+      floatingActionButtonAnimator:FloatingActionButtonAnimator.scaling ,
       body: Wrap(children: [
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -73,6 +77,7 @@ class HomePage extends StatelessWidget {
               // This next line does the trick.
               scrollDirection: Axis.horizontal,
               children: <Widget>[
+                
                 Container(
                   
                   child:Card(
@@ -138,8 +143,10 @@ class HomePage extends StatelessWidget {
           height: 500,
           width: 400,
           child: ListviewHome(),
-        )
+        ),
+        
       ]),
+      
     ));
   }
 }
