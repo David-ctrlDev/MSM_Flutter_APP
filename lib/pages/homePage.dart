@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: kPrimaryColor,
       ),
-      body: Column(children: [
+      body: Wrap(children: [
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
           width: MediaQuery.of(context).size.width * 1,
@@ -73,6 +73,36 @@ class HomePage extends StatelessWidget {
                 fontFamily: 'Helvetica'),
           )
         ]),
+        Container(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+            height: 200,
+            width: 400,
+            child: ListView(
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  width: 160.0,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 160.0,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 160.0,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 160.0,
+                  color: Colors.yellow,
+                ),
+                Container(
+                  width: 160.0,
+                  color: Colors.orange,
+                ),
+              ],
+            )),
         Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           height: 500,
