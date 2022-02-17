@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
+import 'package:msm_mobile_app/pages/travelExpenses/travelExpensesForm.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
 class TravelExpensesMenu extends StatelessWidget {
@@ -61,7 +62,8 @@ class TravelExpensesMenu extends StatelessWidget {
             ],
           ),
         ),
-    ), Container(
+    ),
+    Container(
         child:Column(
           children: [
             Row(
@@ -70,62 +72,13 @@ class TravelExpensesMenu extends StatelessWidget {
                 Image.asset('assets/images/viaticosListheader.png',width:100),
                 Text("Viáticos",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,fontFamily: 'helvetica'),)
               ],),
-            Container(
-              height: 150,
-              padding: EdgeInsets.all(20),
-              child:
-                Card(
-                  elevation: 5,  
-                  child:Padding(
-                    padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
-                    child:Row(
-                      children: [Image.asset('assets/images/viaticosAnticipoIcon.png',width: 120,),
-                                Text("Registrar Anticipo",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      ]
-            ))),
-          ),
-          Container(
-              height: 150,
-              padding: EdgeInsets.all(20),
-              child:
-                Card(
-                  elevation: 5,  
-                  child:Padding(
-                    padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
-                    child:Row(
-                      children: [Image.asset('assets/images/viaticosLegalizacionIcon.png',width: 120,),
-                                Text("Registrar Legalización",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      ]
-            ))),
-          ),
-          Container(
-              height: 150,
-              padding: EdgeInsets.all(20),
-              child:
-                Card(
-                  elevation: 5,  
-                  child:Padding(
-                    padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
-                    child:Row(
-                      children: [Image.asset('assets/images/viaticosLegalizacionIcon.png',width: 120,),
-                                Text("Registrar Legalización",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      ]
-            ))),
-          ),Container(
-              height: 150,
-              padding: EdgeInsets.all(20),
-              child:
-                Card(
-                  elevation: 5,  
-                  child:Padding(
-                    padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
-                    child:Row(
-                      children: [Image.asset('assets/images/viaticosLegalizacionIcon.png',width: 120,),
-                                Text("Registrar Legalización",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      ]
-            ))),
-          )],
-        ))])));
+              
+              ])),
+    Container(
+      height: 400,
+      child: travelExpensesView(context,data),)
+
+          ])));
   }
 }
   class SimpleClipper extends CustomClipper<Path> {
@@ -143,4 +96,67 @@ class TravelExpensesMenu extends StatelessWidget {
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
   }
+}
+
+ListView travelExpensesView(context,data){
+  return(
+    ListView(
+      children: [
+            InkWell(
+              onTap:()=> Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TravelExpensesForm(data),),),
+              child:Container(
+              height: 100,
+              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child:
+                Card(
+                  elevation: 5,  
+                    child:Center(child: ListTile(                      
+                      leading:Image.asset('assets/images/viaticosAnticipoIcon.png',width: 120,),
+                              title:  Text("Registrar Anticipo",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),         
+            )))
+            )),
+          InkWell(
+          onTap:()=> Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TravelExpensesForm(data),),),
+          child:  
+          Container(
+              height: 100,
+              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child:
+                Card(
+                  elevation: 5,  
+                    child:Center(child: ListTile(                      
+                      leading:Image.asset('assets/images/viaticosLegalizacionIcon.png',width: 120,),
+                              title:  Text("Registrar Legalizacion",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),   
+            )))
+            )),
+          InkWell(
+          onTap:()=> Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TravelExpensesForm(data),),),
+          child:
+          InkWell(
+          onTap:()=> Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TravelExpensesForm(data),),),          child:  
+          Container(
+              height: 100,
+              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child:
+                Card(
+                  elevation: 5,  
+                    child:Center(child: ListTile(                      
+                      leading:Image.asset('assets/images/viaticosList.png',width: 120,),
+                              title:  Text("Mis Solicitudes",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),   
+            )))
+            ))),],
+        )
+  );
 }

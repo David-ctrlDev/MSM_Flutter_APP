@@ -67,6 +67,7 @@ flutter:
       - assets/images/viaticosAnticipoIcon.png
       - assets/images/viaticosListheader.png
       - assets/images/viaticosLegalizacionIcon.png
+      - assets/images/viaticosList.png
 
 
   #   - images/a_dot_ham.jpeg
