@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
         ),
         
         Container(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+            padding: EdgeInsets.fromLTRB(35, 0, 35, 20),
             height: 150,
             width: 400,
             child: ListView(
@@ -142,10 +142,10 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           height: 500,
           width: 400,
-          child: ListviewHome(),
+          child: ListviewHome(data,
         ),
         
-      ]),
+      )]),
       
     ));
   }

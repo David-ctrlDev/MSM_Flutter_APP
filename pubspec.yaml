@@ -63,6 +63,11 @@ flutter:
       - assets/images/nomina.png
       - assets/images/prestamos.png
       - assets/images/learnImage.png
+      - assets/images/viaticosListicon.png
+      - assets/images/viaticosAnticipoIcon.png
+      - assets/images/viaticosListheader.png
+      - assets/images/viaticosLegalizacionIcon.png
+
 
   #   - images/a_dot_ham.jpeg
 

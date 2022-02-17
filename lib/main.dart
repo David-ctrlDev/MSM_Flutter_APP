@@ -27,10 +27,12 @@ class MyApp extends StatelessWidget {
         DeviceOrientation.portraitDown,
       ]);
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       title: 'MSM',
       theme: ThemeData(
         primaryColor: Colors.blue,
+        fontFamily: 'Helvetica'
       ),
       home: Login(),
       builder: EasyLoading.init(),

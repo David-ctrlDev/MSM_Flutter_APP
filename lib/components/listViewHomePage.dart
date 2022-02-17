@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/pages/travelExpenses/travelExpensesMenu.dart';
 
 
 class ListviewHome extends StatelessWidget {
+  final User? data;
+  ListviewHome(this.data);
+  
   @override
   Widget build(BuildContext context) {
-    return (myGridView(context));
+    
+    return (myGridView(context,data));
   }
 }
 
-GridView myGridView(context) {
+GridView myGridView(context,data) {
   return (GridView(
       // Create a grid with 2 columns. If you change the scrollDirection to
       // horizontal, this produces 2 rows.
@@ -28,7 +33,7 @@ GridView myGridView(context) {
                   onTap:()=> Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TravelExpensesMenu(),),),
+                                builder: (context) => TravelExpensesMenu(data),),),
                   title: Text(
                     "Viáticos",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -72,6 +77,7 @@ GridView myGridView(context) {
                     Image.asset(
                       'assets/images/learnImage.png',
                       width: 70,
+                      
                     ),
                   ])),
                 )
