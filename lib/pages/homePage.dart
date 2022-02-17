@@ -69,15 +69,16 @@ class HomePage extends StatelessWidget {
         ),
         
         Container(
-            padding: EdgeInsets.fromLTRB(35, 0, 35, 20),
+            padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
             height: 150,
             width: 400,
+            
             child: ListView(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               // This next line does the trick.
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                
+                Icon(Icons.arrow_back_ios_rounded,color: Colors.grey,),
                 Container(
                   
                   child:Card(
@@ -126,6 +127,7 @@ class HomePage extends StatelessWidget {
                   ],),),
                   width: 180.0,
                 ),
+                Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,),
               ],
             )),
             Row(children: [
