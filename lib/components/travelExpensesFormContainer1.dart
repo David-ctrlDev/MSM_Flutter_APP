@@ -35,9 +35,8 @@ class _FormContainer1 extends State<FormContainer1>{
       Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
       Card(
         margin:EdgeInsets.fromLTRB(10, 10, 10,20),
-        elevation: 20,
+        elevation: 10,
         child:SelectFormField(
-        scrollPadding:EdgeInsets.fromLTRB(10, 10, 10,20),
         initialValue: 'nacional',
         icon: Icon(Icons.public),
         labelText: 'Destino',
@@ -46,18 +45,24 @@ class _FormContainer1 extends State<FormContainer1>{
           value = val
         },
         //onSaved: (val) => print(val),
-      )),
-      
+      )),    
       Container(
         child: Column(
           children: [Row(
-                    
                     children:
                     [Text("Fechas Inicio/Fin del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)]),
                     Card(
-                      elevation: 20,
+                      elevation: 10,
                       child: SfDateRangePicker(
-                        
+                        showActionButtons: true,
+                        onSubmit: (_date) {
+                          String parsedate= _date.toString();
+                          parsedate.split(",");
+                          print(parsedate);},
+                        headerStyle: DateRangePickerHeaderStyle(textStyle: TextStyle(fontWeight: FontWeight.bold,color:Colors.black,)),
+                        headerHeight: 60,
+                        enablePastDates: false,
+                        showNavigationArrow: true,
                         controller: _controller,
                         initialSelectedDate: DateTime.now(),
                         onSelectionChanged:selectionChanged ,
@@ -70,7 +75,7 @@ class _FormContainer1 extends State<FormContainer1>{
  void selectionChanged(DateRangePickerSelectionChangedArgs args) {
   SchedulerBinding.instance!.addPostFrameCallback((duration) {
     setState(() {
-      print(args.value);
+      
       _date= args.value;
       datevalue = _date;
       
