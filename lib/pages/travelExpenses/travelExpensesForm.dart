@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
@@ -45,7 +46,9 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
            type:StepperType.vertical,
             steps: getSteps(),
             currentStep: currentStep,
+            onStepTapped: (step)=> setState(()=>currentStep=step),
             onStepContinue: () {
+              print(datevalue);
               final isLastStep = currentStep == getSteps().length -1;
               if (isLastStep){
                 print("Final");
@@ -63,7 +66,9 @@ List <Step> getSteps()=>[
   Step(
     isActive: currentStep >= 0,
     title: Text("Información Formato"),
-     content: Container()),
+     content: FormContainer1(
+       
+     )),
   Step(
     isActive: currentStep >= 1,
     title: Text("Destinos"),
