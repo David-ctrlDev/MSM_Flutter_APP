@@ -32,7 +32,8 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
     body: Theme(
       data: ThemeData(colorScheme:Theme.of(context).colorScheme.copyWith(primary: kPrimaryColor), ),
       child:
-      ListView(children: [
+      Wrap
+      (children: [
         ClipPath(
           clipper: SimpleClipper2(),
         child:Container(
@@ -42,7 +43,8 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
           decoration: BoxDecoration(
               color: kPrimaryColor,
           ),
-          child: Column(
+          child: 
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -74,12 +76,18 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
               )
             ],
           ),
-        ),
-    ),Stepper(
+        ), 
+    ),
+     Container(
+         padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
+            height: 600,
+           
+      child:
+    Stepper(
         controlsBuilder: (BuildContext context,
           {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
         return Row(
-          children: <Widget>[
+          children: [
             TextButton(
               onPressed: onStepContinue,
               child: const Text('Continuar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
@@ -104,12 +112,10 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
               setState(()=>currentStep +=1);
               }
             },
-            onStepCancel: currentStep == 0? null :()=> setState(()=>currentStep -=1))
-      ]))));
+            onStepCancel: currentStep == 0? null :()=> setState(()=>currentStep -=1)),
+     )]))));}
 
-  }}
-
-
+}
 List <Step> getSteps()=>[
   Step(
     isActive: currentStep >= 0,

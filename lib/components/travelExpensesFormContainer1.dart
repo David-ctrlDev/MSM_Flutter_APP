@@ -25,10 +25,15 @@ class _FormContainer1 extends State<FormContainer1>{
     
   Widget build(BuildContext context) {
         
-    return(Wrap(
+    return(Column(
     
       children: [
-      Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+      
+      Container(
+        height: 400,
+        child: ListView(
+          children: [
+            Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
       Card(
         margin:EdgeInsets.fromLTRB(10, 10, 10,20),
         elevation: 5,
@@ -43,9 +48,7 @@ class _FormContainer1 extends State<FormContainer1>{
         },
         //onSaved: (val) => print(val),
       )),    
-      Container(
-        child: Column(
-          children: [Row(
+      Row(
                     children:
                     [
                     Text("Fechas Inicio/Fin del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)]),
@@ -90,6 +93,8 @@ class _FormContainer1 extends State<FormContainer1>{
                     )
      
 ]));}
+
+
  void selectionChanged(DateRangePickerSelectionChangedArgs args) {
   SchedulerBinding.instance!.addPostFrameCallback((duration) {
     setState(() {
