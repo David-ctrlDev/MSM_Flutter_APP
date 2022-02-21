@@ -1,9 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:select_form_field/select_form_field.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 //import 'package:intl/intl.dart';
 
 class FormContainer1 extends StatefulWidget{
@@ -14,16 +12,38 @@ class FormContainer1 extends StatefulWidget{
 
 } 
 var value;
-var datevalue;
+var dateValueIni;
+var dateValueEnd;
 class _FormContainer1 extends State<FormContainer1>{
   
- 
- 
-  final DateRangePickerController _controller = DateRangePickerController();
-  dynamic _date = "";
-  bool visibility = false;
-  double _flexheight = 200;
-    
+  DateTime currentDate = DateTime.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentDate)
+      setState(() {
+        currentDate = pickedDate;
+        dateValueIni = currentDate;
+        print(dateValueIni);
+      });
+  }
+  Future<void> _selectDate2(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentDate)
+      setState(() {
+        currentDate = pickedDate;
+        dateValueEnd = currentDate;
+        print(dateValueEnd);
+      });
+  }
+     
   Widget build(BuildContext context) {
         
     return(Column(
@@ -31,7 +51,7 @@ class _FormContainer1 extends State<FormContainer1>{
       children: [
       
       Container(
-        height: _flexheight,
+        height: 200,
         child: ListView(
           children: [
             Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
@@ -49,69 +69,26 @@ class _FormContainer1 extends State<FormContainer1>{
         },
         //onSaved: (val) => print(val),
       )),    
-      Row(
-                    children:
-                    [
-                    Text("Fechas Inicio/Fin del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)]),
-                    Row(children: [ ElevatedButton(
-                      style: ButtonStyle(),
-                      onPressed: (){
-                      setState(() {
-                        
-                        visibility = !visibility;
-                        visibility == true? _flexheight = 400: _flexheight =200;  
-                        print(visibility);
-                      });
-                    }, child: Text("Abrir Calendario"))],),
-                    Visibility(
-                      visible: visibility,
-                      child: Card(
-                      elevation: 5,
-                      child: SfDateRangePicker(
-                        showActionButtons: true,
-                        onSubmit: (_date) {
-                          setState(() {
-                          
-                        visibility = !visibility;
-                        print(visibility);
-                      });
-                          String parsedate= _date.toString();
-                          parsedate.split(",");
-                          print(parsedate);},
-                        headerStyle: DateRangePickerHeaderStyle(textStyle: TextStyle(fontWeight: FontWeight.bold,color:Colors.black,)),
-                        headerHeight: 20,
-                        enablePastDates: false,
-                        showNavigationArrow: true,
-                        controller: _controller,
-                        initialSelectedDate: DateTime.now(),
-                        onSelectionChanged:selectionChanged ,
-                        selectionMode: DateRangePickerSelectionMode.range,
-                        selectionTextStyle: TextStyle(color: Colors.white),
-                        rangeSelectionColor: Colors.orange,
-                        rangeTextStyle: TextStyle(color: Colors.white),
-                        startRangeSelectionColor: Colors.orange,
-                        
-                        ),)
+      ElevatedButton(
+          onPressed: () => _selectDate(context),
+          child: Text('Seleccione Fecha Inicio'),
+          ),
+      ElevatedButton(
+          onPressed: () => _selectDate2(context),
+          child: Text('Seleccione Fecha Fin'),
+          ),
+          
+
+          
+        ]
+      )
+    )
+  ]));
                     
-        )],),
-                    )
-     
-]));}
+  }
 
 
- void selectionChanged(DateRangePickerSelectionChangedArgs args) {
-  SchedulerBinding.instance!.addPostFrameCallback((duration) {
-    setState(() {
-      
-      _date= args.value;
-      datevalue = _date;
-      
-   
-    });
-    
-  });
-  
-}
+ 
 
 final List<Map<String, dynamic>> _items = [
   {
