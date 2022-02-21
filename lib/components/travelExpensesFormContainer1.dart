@@ -22,6 +22,7 @@ class _FormContainer1 extends State<FormContainer1>{
   final DateRangePickerController _controller = DateRangePickerController();
   dynamic _date = "";
   bool visibility = false;
+  double _flexheight = 200;
     
   Widget build(BuildContext context) {
         
@@ -30,7 +31,7 @@ class _FormContainer1 extends State<FormContainer1>{
       children: [
       
       Container(
-        height: 400,
+        height: _flexheight,
         child: ListView(
           children: [
             Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
@@ -56,7 +57,9 @@ class _FormContainer1 extends State<FormContainer1>{
                       style: ButtonStyle(),
                       onPressed: (){
                       setState(() {
+                        
                         visibility = !visibility;
+                        visibility == true? _flexheight = 400: _flexheight =200;  
                         print(visibility);
                       });
                     }, child: Text("Abrir Calendario"))],),
@@ -68,6 +71,7 @@ class _FormContainer1 extends State<FormContainer1>{
                         showActionButtons: true,
                         onSubmit: (_date) {
                           setState(() {
+                          
                         visibility = !visibility;
                         print(visibility);
                       });
@@ -75,7 +79,7 @@ class _FormContainer1 extends State<FormContainer1>{
                           parsedate.split(",");
                           print(parsedate);},
                         headerStyle: DateRangePickerHeaderStyle(textStyle: TextStyle(fontWeight: FontWeight.bold,color:Colors.black,)),
-                        headerHeight: 60,
+                        headerHeight: 20,
                         enablePastDates: false,
                         showNavigationArrow: true,
                         controller: _controller,
