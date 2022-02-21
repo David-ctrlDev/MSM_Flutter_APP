@@ -24,10 +24,58 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
   @override
 
   Widget build(BuildContext context) {
-    return(Scaffold(appBar:AppBar(title:Text("${data!.cargo}"),),
+      Size size = MediaQuery.of(context).size;
+    return(Scaffold(
+    appBar:AppBar(title:Text("${data!.cargo}"),
+    elevation: 0,
+    backgroundColor: kPrimaryColor,),
     body: Theme(
       data: ThemeData(colorScheme:Theme.of(context).colorScheme.copyWith(primary: kPrimaryColor), ),
-      child:Stepper(
+      child:
+      ListView(children: [
+        ClipPath(
+          clipper: SimpleClipper2(),
+        child:Container(
+          padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+          width: MediaQuery.of(context).size.width * 1,
+          height: size.height * 0.3 - 47,
+          decoration: BoxDecoration(
+              color: kPrimaryColor,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    "Saludos ${(data!.nombres!)}",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  Spacer(),
+                  Icon(
+                    Icons.coronavirus_sharp,
+                    color: Colors.white,
+                    size: 30,
+                  )
+                ],
+              ),
+              Text(
+                "${(data!.cargo)}",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              )
+            ],
+          ),
+        ),
+    ),Stepper(
         controlsBuilder: (BuildContext context,
           {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
         return Row(
@@ -57,7 +105,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
               }
             },
             onStepCancel: currentStep == 0? null :()=> setState(()=>currentStep -=1))
-    )));
+      ]))));
 
   }}
 
@@ -86,3 +134,23 @@ List <Step> getSteps()=>[
     title: Text("Observaciones"),
      content: Container()),
 ];
+
+class SimpleClipper2 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = new Path();
+    // path start with (0.0, 0.0) point
+    path.lineTo(size.width, 0.0 );
+    path.lineTo(size.width, size.height-100 );
+    path.lineTo(0.0,size.height);
+    
+   
+ 
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}

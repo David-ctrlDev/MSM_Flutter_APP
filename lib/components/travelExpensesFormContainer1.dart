@@ -21,22 +21,19 @@ class _FormContainer1 extends State<FormContainer1>{
  
   final DateRangePickerController _controller = DateRangePickerController();
   dynamic _date = "";
-  
-  
-  
-
-
-  
-  Widget build(BuildContext context) {
+  bool visibility = false;
     
-    return(ListView(
-      shrinkWrap: true,
+  Widget build(BuildContext context) {
+        
+    return(Wrap(
+    
       children: [
       Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
       Card(
         margin:EdgeInsets.fromLTRB(10, 10, 10,20),
-        elevation: 10,
+        elevation: 5,
         child:SelectFormField(
+        style:TextStyle(fontWeight: FontWeight.bold) ,
         initialValue: 'nacional',
         icon: Icon(Icons.public),
         labelText: 'Destino',
@@ -50,12 +47,27 @@ class _FormContainer1 extends State<FormContainer1>{
         child: Column(
           children: [Row(
                     children:
-                    [Text("Fechas Inicio/Fin del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)]),
-                    Card(
-                      elevation: 10,
+                    [
+                    Text("Fechas Inicio/Fin del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)]),
+                    Row(children: [ ElevatedButton(
+                      style: ButtonStyle(),
+                      onPressed: (){
+                      setState(() {
+                        visibility = !visibility;
+                        print(visibility);
+                      });
+                    }, child: Text("Abrir Calendario"))],),
+                    Visibility(
+                      visible: visibility,
+                      child: Card(
+                      elevation: 5,
                       child: SfDateRangePicker(
                         showActionButtons: true,
                         onSubmit: (_date) {
+                          setState(() {
+                        visibility = !visibility;
+                        print(visibility);
+                      });
                           String parsedate= _date.toString();
                           parsedate.split(",");
                           print(parsedate);},
@@ -66,8 +78,14 @@ class _FormContainer1 extends State<FormContainer1>{
                         controller: _controller,
                         initialSelectedDate: DateTime.now(),
                         onSelectionChanged:selectionChanged ,
-                        selectionMode: DateRangePickerSelectionMode.multiple,
-                        ),
+                        selectionMode: DateRangePickerSelectionMode.range,
+                        selectionTextStyle: TextStyle(color: Colors.white),
+                        rangeSelectionColor: Colors.orange,
+                        rangeTextStyle: TextStyle(color: Colors.white),
+                        startRangeSelectionColor: Colors.orange,
+                        
+                        ),)
+                    
         )],),
                     )
      
@@ -100,3 +118,4 @@ final List<Map<String, dynamic>> _items = [
   },
 
 ];}
+
