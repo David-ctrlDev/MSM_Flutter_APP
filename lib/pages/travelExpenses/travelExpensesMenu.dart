@@ -10,6 +10,7 @@ class TravelExpensesMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
     return (Scaffold(appBar: AppBar(
         title: Text("Suite MSM"),
@@ -81,6 +82,7 @@ class TravelExpensesMenu extends StatelessWidget {
           ])));
   }
 }
+
   class SimpleClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
