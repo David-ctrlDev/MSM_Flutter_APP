@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
-
-
 
 class TravelExpensesForm extends StatefulWidget {
     final User? data;
@@ -26,20 +25,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
 
                 
   void showAlert(BuildContext context) {
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),),
-                title: Text("Tener en Cuenta:"),
-                content: Text("- La Información que registrara en el formato solo debe obedecer entre las fechas de inicio y fin del viaje. Esto incluye la información principal del formato, Destinos, Desplazamientos, Gastos adicionales y Facturas para deducibles.",
-                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-                backgroundColor: Colors.white70,
-                elevation: 10,
-                actions: [TextButton(
-                  onPressed: (){},
-                  child: Text("Got it!!"))],
-              ));
+      
     }
 
   Widget build(BuildContext context) {
@@ -49,7 +35,9 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
      
     return(Scaffold(
       
-    
+    floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+    floatingActionButton: DraggableButton(),
+    floatingActionButtonAnimator:FloatingActionButtonAnimator.scaling ,
     appBar:AppBar(title:Text("${data!.cargo}"),
     elevation: 0,
     backgroundColor: kPrimaryColor,),
@@ -58,13 +46,12 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
       child:
       Wrap
       (children: [
-
         ClipPath(
           clipper: SimpleClipper2(),
         child:Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
           width: MediaQuery.of(context).size.width * 1,
-          height: size.height * 0.3 - 47,
+          height: size.height * 0.3 - 100,
           decoration: BoxDecoration(
               color: kPrimaryColor,
           ),
@@ -72,7 +59,6 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            
               Row(
                 children: [
                   Text(
@@ -104,20 +90,19 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
           ),
         ), 
     ),
-    
-    
      Container(
-         padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
-            height: 600,
-           
-      child:
+        padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
+        height: 600,     
+        child:
     Stepper(
         controlsBuilder: (BuildContext context,
           {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
         return Row(
           children: [
             TextButton(
-              onPressed: onStepContinue,
+              onPressed: ()=>{
+                print(value),
+                onStepContinue},
               child: const Text('Continuar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
             ),
             TextButton(
