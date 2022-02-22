@@ -54,9 +54,8 @@ class _FormContainer1 extends State<FormContainer1>{
         height: 380,
         child: ListView(
           children: [
-            Text("Destino del viaje",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
       Card(
-        margin:EdgeInsets.fromLTRB(10, 10, 10,20),
+        margin:EdgeInsets.fromLTRB(10, 0, 10,20),
         elevation: 4,
         child:Column(children:[SelectFormField(
         style:TextStyle(fontWeight: FontWeight.bold,fontSize: 14) ,
@@ -67,6 +66,7 @@ class _FormContainer1 extends State<FormContainer1>{
         onChanged: (val ) => {
           value = val
         },
+        toolbarOptions: ToolbarOptions(copy: true),
         //onSaved: (val) => print(val),
       ),SelectFormField(
         style:TextStyle(fontWeight: FontWeight.bold,fontSize: 14) ,
@@ -82,7 +82,6 @@ class _FormContainer1 extends State<FormContainer1>{
           child:
             TextField(
               decoration: InputDecoration(
-              
               icon: Icon(Icons.bookmark_added_sharp),  
               hintText: 'Objeto del viaje',
               hintStyle: TextStyle(fontSize: 14,fontWeight: FontWeight.bold)

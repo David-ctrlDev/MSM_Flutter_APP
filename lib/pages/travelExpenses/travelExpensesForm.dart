@@ -100,9 +100,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
         return Row(
           children: [
             TextButton(
-              onPressed: ()=>{
-                print(value),
-                onStepContinue},
+              onPressed:onStepContinue,
               child: const Text('Continuar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
             ),
             TextButton(
@@ -120,7 +118,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm>{
               
               final isLastStep = currentStep == getSteps().length -1;
               if (isLastStep){
-                print("Final");
+                print(value+dateValueIni.toString()+dateValueEnd.toString());
               }else{
               setState(()=>currentStep +=1);
               }
