@@ -26,6 +26,7 @@ dependencies:
   http: 
   
   flutter_easyloading: ^3.0.3
+  persistent_bottom_nav_bar: any
 
 
 
