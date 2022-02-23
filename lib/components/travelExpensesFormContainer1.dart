@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/utilities/fetch.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 class FormContainer1 extends StatefulWidget {
@@ -67,6 +68,16 @@ class _FormContainer1 extends State<FormContainer1> {
                     labelText: 'Viaje asociado a:',
                     items: _items2,
                     onChanged: (val) => {value = val},
+                  
+                  ),
+                  SelectFormField(
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    initialValue: 'negocio',
+                    icon: Icon(Icons.public),
+                    labelText: 'Viaje asociado a:',
+                    items: _items2,
+                    onChanged: (val) => {value = val},
+                  
                   )
                 ])),
             Container(
@@ -87,6 +98,7 @@ class _FormContainer1 extends State<FormContainer1> {
                       hintStyle:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                 )),
+                
             ElevatedButton(
               style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(Size.fromWidth(10))),
@@ -97,12 +109,12 @@ class _FormContainer1 extends State<FormContainer1> {
               ),
             ),
             ElevatedButton(
-              onPressed: () => _selectDate2(context),
+              onPressed: () =>func(),//_selectDate2(context),
               child: Text(
                 'Seleccione Fecha Fin',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
               ),
-            )
+            ),
           ]))
     ])));
   }
@@ -130,4 +142,9 @@ class _FormContainer1 extends State<FormContainer1> {
       'textStyle': TextStyle(color: Colors.red),
     },
   ];
+void func()async{
+  Future<List> _futureOfList = viajeAsociadoFetchData();
+  List list = await _futureOfList ;
+  print(list);
+}
 }

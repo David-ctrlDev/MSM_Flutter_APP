@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:msm_mobile_app/models/login_response.dart';
+import 'package:msm_mobile_app/models/viajeAsociadoResponse.dart';
 
 Future <User?>loginFetchData(password, user) async {
   const url= 'https://www.mv-tel.com/MSM_Viaticos_API_TEST/api/Usuarios/LoginUserPassword';
@@ -23,3 +24,25 @@ Future <User?>loginFetchData(password, user) async {
     return responseData;
   }
 }
+
+Future <List<Map<String, dynamic>>>viajeAsociadoFetchData() async {
+  const url= 'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/CuentaContable/ObtenerCuentasContablesPorViajeAsociado/1';
+  
+  final response = await http.get(Uri.parse(url),
+  
+  );
+ if (response.statusCode == 200){
+    final  body = jsonDecode(response.body);
+    final responseData =  ViajeAsociadoList.fromJson(body);
+    List<Map<String, dynamic>>myList=[];
+    for (var i in responseData.viajes){
+      myList.add({'value': '${i.codigo}', 'label':'${i.codigo}' });
+    }
+    return myList;}
+  else{
+    final responseData = null;
+    print(response.statusCode);
+    return responseData;
+  }
+}
+
