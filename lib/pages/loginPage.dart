@@ -98,7 +98,8 @@ class _LoginState extends State<Login> {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                             ),
-                                          )
+                                          ),
+                                          Image.asset('assets/images/loginImage1.png',width:100)
                                         ])));
                               });
                         }
