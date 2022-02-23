@@ -87,15 +87,6 @@ class _FormContainer1 extends State<FormContainer1> {
                       hintStyle:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                 )),
-            Container(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.settings_applications_outlined),
-                      hintText: 'Número de viaje SAP',
-                      hintStyle:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                )),
             ElevatedButton(
               style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(Size.fromWidth(10))),
