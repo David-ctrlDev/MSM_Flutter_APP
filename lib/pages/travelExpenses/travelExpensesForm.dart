@@ -82,7 +82,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 30, 20),
+                    padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
                     height: 800,
                     child: Stepper(
                         controlsBuilder: (BuildContext context,
