@@ -23,9 +23,9 @@ Future<User?> loginFetchData(password, user) async {
   }
 }
 
-Future<List<Map<String, dynamic>>> viajeAsociadoFetchData() async {
-  const url =
-      'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/CuentaContable/ObtenerCuentasContablesPorViajeAsociado/1';
+Future<List<Map<String, dynamic>>> viajeAsociadoFetchData(destination) async {
+  var url =
+      'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/CuentaContable/ObtenerCuentasContablesPorViajeAsociado/$destination';
 
   final response = await http.get(
     Uri.parse(url),

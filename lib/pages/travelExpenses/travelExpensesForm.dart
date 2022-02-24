@@ -66,12 +66,6 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                                   fontSize: 25,
                                 ),
                                 textAlign: TextAlign.left,
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.coronavirus_sharp,
-                                color: Colors.white,
-                                size: 30,
                               )
                             ],
                           ),
@@ -88,8 +82,8 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
-                    height: 600,
+                    padding: EdgeInsets.fromLTRB(0, 0, 30, 20),
+                    height: 800,
                     child: Stepper(
                         controlsBuilder: (BuildContext context,
                             {VoidCallback? onStepContinue,
@@ -123,7 +117,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                           final isLastStep =
                               currentStep == getSteps().length - 1;
                           if (isLastStep) {
-                            print(value +
+                            print(destinationValue + associatedValue + accountValue+
                                 dateValueIni.toString() +
                                 dateValueEnd.toString());
                           } else {
