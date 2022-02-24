@@ -62,7 +62,7 @@ class _FormContainer1 extends State<FormContainer1> {
           height: 180,
           child: ListView(children: [
             Card(
-                margin: EdgeInsets.fromLTRB(20, 0, 10, 5),
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child:SelectFormField(
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
@@ -75,9 +75,12 @@ class _FormContainer1 extends State<FormContainer1> {
                     //onSaved: (val) => print(val),
                   )),
             Card(
-                margin: EdgeInsets.fromLTRB(20, 0, 10, 5),
+                
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child:SelectFormField(
+                    textAlign: TextAlign.center,
+                    scrollPadding:EdgeInsets.fromLTRB(10, 0, 10, 5),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     initialValue: '',
                     icon: Icon(Icons.public),
@@ -87,7 +90,7 @@ class _FormContainer1 extends State<FormContainer1> {
                   )
             ),
             Card(
-                margin: EdgeInsets.fromLTRB(20, 0, 10, 5),
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child:SelectFormField(
                     hintText: "Recuerda Seleccionar el Viaje",
@@ -121,7 +124,7 @@ class _FormContainer1 extends State<FormContainer1> {
             ElevatedButton(
               
               style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all(Size.fromWidth(200))),
+                  fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
               onPressed: () => _selectDate(context),
               child: Text(
                 selectDate1Text,
@@ -130,7 +133,7 @@ class _FormContainer1 extends State<FormContainer1> {
             ),
             ElevatedButton(
               style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all(Size.fromWidth(200))),
+                  fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
               onPressed: () =>_selectDate2(context),
               child: Text(
                 selectDate2Text,
