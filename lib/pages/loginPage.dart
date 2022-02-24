@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: WaveClipperTwo(),
             child: Container(
-              height: 150,
+              height: size.height/8,
               color: kPrimaryColor,
               ),
           ),
