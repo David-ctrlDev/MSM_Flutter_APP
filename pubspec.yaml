@@ -30,6 +30,7 @@ dependencies:
   select_form_field: "^2.2.0"
   syncfusion_flutter_datepicker: ^19.4.52
   intl: ^0.17.0
+  flutter_custom_clippers: 2.0.0
 
 
 

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/pages/loginPage.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:msm_mobile_app/utilities/constants.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MSM',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
+        primaryColor: kPrimaryColor,
         fontFamily: 'Helvetica'
       ),
       home: Login(),
