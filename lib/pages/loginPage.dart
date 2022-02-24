@@ -78,7 +78,7 @@ class LoginColumn extends StatelessWidget {
                 child: Center(
                     child: Image.asset(
                   'assets/images/loginImage2.png',
-                  height: 200,
+                  height: 250,
                 ))),
             SizedBox(
                 width: 250,
