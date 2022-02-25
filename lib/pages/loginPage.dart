@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 18,
                         ),
                         textAlign: TextAlign.center,
                       ))),
@@ -103,7 +103,6 @@ class LoginColumn extends StatelessWidget {
                   labelStyle: TextStyle(color: kPrimaryColor)),
             )),
         SizedBox(
-            height: 80,
             width: 250,
             child: TextFormField(
               controller: password,
