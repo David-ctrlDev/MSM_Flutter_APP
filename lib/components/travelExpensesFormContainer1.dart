@@ -79,7 +79,7 @@ class _FormContainer1 extends State<FormContainer1> {
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child: SelectFormField(
-                  textAlign: TextAlign.center,
+                  
                   scrollPadding: EdgeInsets.fromLTRB(10, 0, 10, 5),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   initialValue: '',
@@ -170,6 +170,7 @@ class _FormContainer1 extends State<FormContainer1> {
     await EasyLoading.show(status: "Cargando");
     List list = await _futureOfList;
     setState(() {
+      
       _items3 = list;
        EasyLoading.dismiss(animation: false);
     });
