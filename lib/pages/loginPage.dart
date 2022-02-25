@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: WaveClipperTwo(),
             child: Container(
-              height: size.height / 7,
+              height: size.height / 7.5,
               color: kPrimaryColor,
             ),
           ),
@@ -103,6 +103,7 @@ class LoginColumn extends StatelessWidget {
                   labelStyle: TextStyle(color: kPrimaryColor)),
             )),
         SizedBox(
+            height: 80,
             width: 250,
             child: TextFormField(
               controller: password,
