@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: WaveClipperTwo(),
             child: Container(
-              height: size.height / 6,
+              height: size.height / 7,
               color: kPrimaryColor,
             ),
           ),
@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
           ClipPath(
               clipper: WaveClipperTwo(reverse: true),
               child: Container(
-                height: size.height / 6,
+                height: size.height / 5,
                 color: kPrimaryColor,
                 child: SizedBox(
                   child: Padding(
