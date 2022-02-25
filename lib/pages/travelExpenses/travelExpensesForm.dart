@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
+import 'package:msm_mobile_app/components/travelExpensesFormContainer2.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
@@ -142,7 +143,7 @@ List<Step> getSteps() => [
       Step(
           isActive: currentStep >= 1,
           title: Text("Destinos"),
-          content: Container()),
+          content: FormContainer2()),
       Step(
           isActive: currentStep >= 2,
           title: Text("Desplazamientos Aeroportuarios"),

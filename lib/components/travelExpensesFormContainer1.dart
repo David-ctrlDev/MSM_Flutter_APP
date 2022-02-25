@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 import 'package:msm_mobile_app/utilities/fetch.dart';
 import 'package:select_form_field/select_form_field.dart';
@@ -166,9 +167,11 @@ class _FormContainer1 extends State<FormContainer1> {
   void func(destination) async {
     destination == 'negocio' ? destination = 2 : destination = 1;
     Future<List> _futureOfList = viajeAsociadoFetchData(destination);
+    await EasyLoading.show(status: "Cargando");
     List list = await _futureOfList;
     setState(() {
       _items3 = list;
+       EasyLoading.dismiss(animation: false);
     });
   }
 }

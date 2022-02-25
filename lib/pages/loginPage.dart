@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: WaveClipperTwo(),
             child: Container(
-              height: size.height / 7.5,
+              height: size.height / 8,
               color: kPrimaryColor,
             ),
           ),
@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
           ClipPath(
               clipper: WaveClipperTwo(reverse: true),
               child: Container(
-                height: size.height / 5,
+                height: size.height / 4.8,
                 color: kPrimaryColor,
                 child: SizedBox(
                   child: Padding(
@@ -87,7 +87,7 @@ class LoginColumn extends StatelessWidget {
             child: Center(
                 child: Image.asset(
               'assets/images/loginImage2.png',
-              height: 250,
+              height: 260,
             ))),
         SizedBox(
             width: 250,
