@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                 color: kPrimaryColor,
                 child: SizedBox(
                   child: Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                       child: Center(
                           child: Text(
                         "Dejando una linda huella en cada una de nuestras acciones",
