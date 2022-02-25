@@ -83,7 +83,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
-                    height: 800,
+                    height: 600,
                     child: Stepper(
                         controlsBuilder: (BuildContext context,
                             {VoidCallback? onStepContinue,
@@ -117,7 +117,9 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                           final isLastStep =
                               currentStep == getSteps().length - 1;
                           if (isLastStep) {
-                            print(destinationValue + associatedValue + accountValue+
+                            print(destinationValue +
+                                associatedValue +
+                                accountValue +
                                 dateValueIni.toString() +
                                 dateValueEnd.toString());
                           } else {
