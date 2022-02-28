@@ -15,6 +15,7 @@ class TravelExpensesForm extends StatefulWidget {
 }
 
 int currentStep = 0;
+var destination =destinationValue;
 
 class _TravelExpensesFormState extends State<TravelExpensesForm> {
   final User? data;
@@ -115,8 +116,10 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                         onStepTapped: (step) =>
                             setState(() => currentStep = step),
                         onStepContinue: () {
+                          print(destinationValue);
                           final isLastStep =
                               currentStep == getSteps().length - 1;
+                              
                           if (isLastStep) {
                             print(destinationValue +
                                 associatedValue +

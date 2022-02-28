@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:msm_mobile_app/models/destinationResponse.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/models/viajeAsociadoResponse.dart';
 
@@ -37,6 +38,29 @@ Future<List<Map<String, dynamic>>> viajeAsociadoFetchData(destination) async {
     for (var i in responseData.viajes) {
       myList.add({'value': '${i.codigo}', 'label': '${i.codigo}'});
     }
+    return myList;
+  } else {
+    final responseData = null;
+    print(response.statusCode);
+    return responseData;
+  }
+}
+
+Future<List<Map<String, dynamic>>> destinationFetchData(destination) async {
+  var url =
+      'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/Pais/$destination';
+
+  final response = await http.get(
+    Uri.parse(url),
+  );
+  if (response.statusCode == 200) {
+    final body = jsonDecode(response.body);
+    final responseData = DestinationList.fromJson(body);
+    List<Map<String, dynamic>> myList = [];
+    for (var i in responseData.destinations) {
+      myList.add({'value': '${i.id}', 'label': '${i.nombre}'},);
+    }
+    print(myList);
     return myList;
   } else {
     final responseData = null;

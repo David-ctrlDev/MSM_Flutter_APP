@@ -11,7 +11,7 @@ class FormContainer1 extends StatefulWidget {
 
 var selectDate1Text = "Seleccione Fecha Inicio";
 var selectDate2Text = "Seleccione Fecha Fin";
-var destinationValue;
+var destinationValue = "nacional";
 var associatedValue;
 var accountValue;
 var dateValueIni;
@@ -94,7 +94,6 @@ class _FormContainer1 extends State<FormContainer1> {
                 elevation: 4,
                 child: SelectFormField(
                   hintText: "Recuerda Seleccionar el Viaje",
-                  type: SelectFormFieldType.dialog,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   icon: Icon(Icons.account_balance_wallet_sharp),
                   labelText: 'Cuenta Contable:',
