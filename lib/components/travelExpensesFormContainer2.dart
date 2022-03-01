@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:msm_mobile_app/components/destinationForm.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 import 'package:msm_mobile_app/utilities/fetch.dart';
+import 'package:select_form_field/select_form_field.dart';
+
 
 class FormContainer2 extends StatefulWidget {
-
- 
 
  
   _FormContainer2 createState() => _FormContainer2();
@@ -17,8 +16,12 @@ class FormContainer2 extends StatefulWidget {
 }
 
 class _FormContainer2 extends State<FormContainer2> {
-  var listCountrys;
 
+  TextEditingController? _controller;
+  String _valueChanged = '';
+ 
+  var listCountrys;
+ 
 
 
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class _FormContainer2 extends State<FormContainer2> {
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
-        onPressed: (){updateFunc();_showMyDialog (context,listCountrys);},
+        onPressed: (){_showMyDialog (context);},
         child: Text("Agregar Destino",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
         ),
@@ -64,19 +67,7 @@ class _FormContainer2 extends State<FormContainer2> {
         ],),
     ));
   }
-    void updateFunc() async {
-    
-    Future<List> _futureOfList = destinationFetchData(destinationValue);
-    await EasyLoading.show(status: "Cargando");
-    List list = await _futureOfList;
-    setState(() {
-      
-      listCountrys = list;
-       
-    });
-    EasyLoading.dismiss(animation: false);
-  }
-}
+  
   
 
 List dataColumn = ["Destino","Fecha Inicio", "Fecha Fin"];
@@ -106,9 +97,19 @@ List<DataRow> getDatarow(){
   return newDataRow;
 }
 
+Future<void> _showMyDialog(context) async {
+    
+    
+    Future<List> _futureOfList = destinationFetchData(destinationValue);
+    await EasyLoading.show(status: "Cargando");
+    List list = await _futureOfList;
+    setState(() {
+      
+      listCountrys = list;
+       
+    });
+    EasyLoading.dismiss(animation: false);
 
-
-Future<void> _showMyDialog(context, listCountrys) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -116,8 +117,24 @@ Future<void> _showMyDialog(context, listCountrys) async {
       return AlertDialog(
         title: const Text('Destinos',style: TextStyle(fontWeight: FontWeight.bold),),
         content: SingleChildScrollView(
-          child: DestinationContainer(listCountrys)
-        ),
+          child:Column(
+            children: <Widget>[
+              SelectFormField(
+                type: SelectFormFieldType.dialog,
+                controller: _controller,
+                //initialValue: _initialValue,
+                icon: Icon(Icons.public),
+                labelText: 'Seleccione el país',
+                changeIcon: true,
+                dialogTitle: 'País',
+                dialogCancelBtn: 'CANCEL',
+                enableSearch: true,
+                dialogSearchHint: 'Buscar país',
+                items: listCountrys,
+                onChanged: (val) => setState(() => _valueChanged = val),
+                
+              ),
+            ])),
         actions: <Widget>[
           TextButton(
             child: const Text('Agregar'),
@@ -129,4 +146,5 @@ Future<void> _showMyDialog(context, listCountrys) async {
       );
     },
   );
+}
 }
