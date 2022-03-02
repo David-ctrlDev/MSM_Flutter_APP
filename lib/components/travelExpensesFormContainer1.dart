@@ -52,7 +52,7 @@ class _FormContainer1 extends State<FormContainer1> {
       setState(() {
         currentDate = pickedDate;
         dateValueEnd = currentDate;
-        selectDate2Text = DateFormat.yMMMMd().format(dateValueIni).toString();
+        selectDate2Text = DateFormat.yMMMMd().format(dateValueEnd).toString();
       });
   }
 

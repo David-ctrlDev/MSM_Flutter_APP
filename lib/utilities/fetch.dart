@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:msm_mobile_app/models/cityDestinationResponse.dart';
 import 'package:msm_mobile_app/models/destinationResponse.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/models/viajeAsociadoResponse.dart';
@@ -41,12 +42,13 @@ Future<List<Map<String, dynamic>>> viajeAsociadoFetchData(destination) async {
     return myList;
   } else {
     final responseData = null;
-    print(response.statusCode);
+    
     return responseData;
   }
 }
 
 Future<List<Map<String, dynamic>>> destinationFetchData(destination) async {
+  destination == 'nacional'? destination = 'Nacional': destination=destination;
   var url =
       'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/Pais/$destination';
 
@@ -60,11 +62,34 @@ Future<List<Map<String, dynamic>>> destinationFetchData(destination) async {
     for (var i in responseData.destinations) {
       myList.add({'value': '${i.id}', 'label': '${i.nombre}'},);
     }
+   
+    return myList;
+  } else {
+    final responseData = null;
+  
+    return responseData;
+  }
+}
+Future<List<Map<String, dynamic>>> destinationCityFetchData(destination) async {
+  print(destination);
+  var url =
+      'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/Ciudad/$destination';
+
+  final response = await http.get(
+    Uri.parse(url),
+  );
+  if (response.statusCode == 200) {
+    final body = jsonDecode(response.body);
+    final responseData = CityDestinationList.fromJson(body);
+    List<Map<String, dynamic>> myList = [];
+    for (var i in responseData.destinations) {
+      myList.add({'value': '${i.paisId}', 'label': '${i.nombre}'},);
+    }
     print(myList);
     return myList;
   } else {
     final responseData = null;
-    print(response.statusCode);
+    
     return responseData;
   }
 }
