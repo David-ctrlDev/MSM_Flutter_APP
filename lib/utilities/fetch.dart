@@ -83,7 +83,7 @@ Future<List<Map<String, dynamic>>> destinationCityFetchData(destination) async {
     final responseData = CityDestinationList.fromJson(body);
     List<Map<String, dynamic>> myList = [];
     for (var i in responseData.destinations) {
-      myList.add({'value': '${i.paisId}', 'label': '${i.nombre}'},);
+      myList.add({'value': '${i.nombre}', 'label': '${i.nombre}'},);
     }
     print(myList);
     return myList;

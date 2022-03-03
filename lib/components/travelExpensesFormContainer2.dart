@@ -5,8 +5,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
+import 'package:msm_mobile_app/utilities/constants.dart';
 import 'package:msm_mobile_app/utilities/fetch.dart';
 import 'package:select_form_field/select_form_field.dart';
+
 
 
 class FormContainer2 extends StatefulWidget {
@@ -15,7 +17,30 @@ class FormContainer2 extends StatefulWidget {
   _FormContainer2 createState() => _FormContainer2();
   
 }
-dynamic _valueChangedCity = [
+var destinationListAdd = [];
+List<DataColumn> dataTableColumns = [
+  DataColumn(
+          label: Text(
+            'Destino',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Fecha Inicio',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Fecha Fin',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+];
+List<DataRow> dataTableRows = [];
+
+dynamic  listCities= [
   {
     'value': 'corporativo',
     'label': 'Para cargar las cuentas, recuerda Seleccionar Viaje Asociado a:',
@@ -25,27 +50,42 @@ dynamic _valueChangedCity = [
 class _FormContainer2 extends State<FormContainer2> {
 
   TextEditingController? _controller;
-  String _valueChangedCountry = '';
+  TextEditingController? _controlle2;
   var listCountrys;
   var dateDestinitaionIni;
   var dateDestinitaionEnd;
+   var _valueChangedCity   = "";
+  var _valueChangedCountry = "";
   var selectDate1TextDestination = "Fecha Inicio";
   var selectDate2TextDestination = "Fecha Fin";
+  var distInpu       = TextEditingController();
+  var costCenter     = TextEditingController();
+  var mangmentCenter = TextEditingController();
+  var internalOrder  = TextEditingController();
+  var pospre         = TextEditingController();
+  var graph          = TextEditingController();
+  var operation      = TextEditingController();
+  var pepElement     = TextEditingController();
+  var fund           = TextEditingController();
+
+
+
  
 
 
   Widget build(BuildContext context) {
     return (Container(
-      
+      width:MediaQuery.of(context).size.width ,
       child: Column(
         children: [
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
-        onPressed: (){_showMyDialogMain (context);},
+        onPressed: (){_showMyDialogMain (context);print(destinationListAdd);},
         child: Text("Agregar Destino",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           )),
+        myDatatable(),
      ])));
       
   }
@@ -65,188 +105,204 @@ Future<void> _showMyDialogMain(context) async {
           height: MediaQuery.of(context).size.height/1.35,
           width: MediaQuery.of(context).size.width ,
           child:
-         StaggeredGrid.count(
-            crossAxisCount: 4,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-         
-          children: <Widget>[
-        StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 2,
-          child: Card(
-            shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20), ),
-            child: Container(
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-              image: NetworkImage("https://images.unsplash.com/photo-1585871746932-e133d3fedf4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=770&q=80"),
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
-            )),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              ListTile(
-                title: Text("País", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
-              ),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-               children: [
-                 ElevatedButton(
-                   child: const Text('Buscar'),
-                   onPressed: () {_showMyDialog(context);},
-                 )]),
-            ],),)),
-        ),
-        StaggeredGridTile.count(
-             crossAxisCellCount: 2,
-          mainAxisCellCount: 2,
-        child: Card(
-          
-          shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20), ),
-            child: Container(
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-              image: NetworkImage("https://images.unsplash.com/photo-1568668392383-58c369615742?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=719&q=80"),
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.topCenter,
-            )),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              ListTile(
-                title: Text("Ciudad", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
-              ),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-               children: [
-                 ElevatedButton(
-                   child: const Text('Buscar'),
-                   onPressed: () {_showMyDialog2(context);},
-                 )]),
-            ],),)),
-      ),
-       StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 0.5,
-         child: ElevatedButton(
-                       
-                       onPressed: () => _selectDate(context),
-                       child: Text(
-                  selectDate1TextDestination,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-                       ),
-                     ),
-       ),
-        StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 0.5,
-          child: ElevatedButton(
+         SingleChildScrollView(
+           child: StaggeredGrid.count(
+              crossAxisCount: 4,
+              mainAxisSpacing: 4,
+              crossAxisSpacing: 4,
+           
+            children: <Widget>[
+                 StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 2,
+            child: Card(
+              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20), ),
+              child: Container(
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                image: NetworkImage("https://images.unsplash.com/photo-1585871746932-e133d3fedf4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=770&q=80"),
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              )),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                ListTile(
+                  title: Text("País", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                 children: [
+                   ElevatedButton(
+                     child: const Text('Buscar'),
+                     onPressed: () {_showMyDialog(context);},
+                   )]),
+              ],),)),
+                 ),
+                 StaggeredGridTile.count(
+               crossAxisCellCount: 2,
+            mainAxisCellCount: 2,
+                 child: Card(
             
-            onPressed: () => _selectDate2(context),
-            child: Text(
-              selectDate2TextDestination,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-            )),
-        ),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Dist Inpu',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Centro de Costos',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Centro Gestor',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Orden Interna',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Pospre',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Grafo',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Operación',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Elemento PeP',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 1,
-           child:TextFormField(
-                        decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 10),
-            labelText: 'Fondo',
-            icon: Icon(Icons.text_rotation_none_rounded,),
-                                             
-         ))),
-         
-         ],)),
+            shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20), ),
+              child: Container(
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                image: NetworkImage("https://images.unsplash.com/photo-1568668392383-58c369615742?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=719&q=80"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
+              )),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                ListTile(
+                  title: Text("Ciudad", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                 children: [
+                   ElevatedButton(
+                     child: const Text('Buscar'),
+                     onPressed: () {_showMyDialog2(context);},
+                   )]),
+              ],),)),
+               ),
+                StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 0.5,
+           child: ElevatedButton(
+                         
+                         onPressed: () => _selectDate(context),
+                         child: Text(
+                    selectDate1TextDestination,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                         ),
+                       ),
+                ),
+                 StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 0.5,
+            child: ElevatedButton(
+              
+              onPressed: () => _selectDate2(context),
+              child: Text(
+                selectDate2TextDestination,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+              )),
+                 ),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+               controller: distInpu,
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Dist Inpu',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Centro de Costos',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Centro Gestor',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Orden Interna',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Pospre',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Grafo',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Operación',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Elemento PeP',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 1,
+             child:TextFormField(
+                          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              labelText: 'Fondo',
+              icon: Icon(Icons.text_rotation_none_rounded,),
+                                               
+           ))),
+           
+           ],),
+         )),
    actions: <Widget>[
           TextButton(
             child: const Text('Agregar'),
             onPressed: () {
+              addDestinationListAdd(_valueChangedCountry,
+                                    _valueChangedCity,
+                                    dateDestinitaionIni,
+                                    dateDestinitaionEnd,
+                                    distInpu,
+                                    costCenter,
+                                    mangmentCenter,
+                                    internalOrder,
+                                    pospre,
+                                    graph,
+                                    operation,
+                                    pepElement,
+                                    fund);
               Navigator.of(context).pop();
             },
           ),
@@ -321,17 +377,17 @@ Future<void> _showMyDialog2(context) async {
                SelectFormField(
                 textCapitalization:TextCapitalization.none,
                 type: SelectFormFieldType.dialog,
-                controller: _controller,
-                initialValue: _valueChangedCountry,
+                controller: _controlle2,
+                initialValue: "" ,
                 icon: Icon(Icons.public),
                 labelText: 'Seleccione Ciudad',
                 changeIcon: true,
-                dialogTitle: 'País',
+                dialogTitle: 'Ciudad',
                 dialogCancelBtn: 'CANCEL',
                 enableSearch: true,
-                dialogSearchHint: 'Buscar país',
-                items: _valueChangedCity,
-                onChanged: (val){ print(val);},
+                dialogSearchHint: 'Buscar Ciudad',
+                items: listCities,
+                onChanged: (val)=>{print(listCities), _valueChangedCity = val, print(_valueChangedCity)},
                 
               ),
             ])),
@@ -355,10 +411,9 @@ void func(destination) async {
     await EasyLoading.show(status: "Cargando");
     List list = await _futureOfList;
     setState(() {
-      _valueChangedCity = list;
+      listCities = list;
        EasyLoading.dismiss(animation: false);
     });
-    print(_valueChangedCity);
   }
 DateTime currentDate = DateTime.now();
 Future<void> _selectDate(BuildContext context) async {
@@ -389,5 +444,75 @@ Future<void> _selectDate2(BuildContext context) async {
       });
   }
 
+DataTable myDatatable(){
+
+return(
+  DataTable(
+    headingRowColor:MaterialStateProperty.all(kPrimaryColor),
+    columnSpacing: 10,
+    columns: dataTableColumns,
+    rows: dataTableRows,
+    decoration: BoxDecoration(border: Border.all(width: 1.0) , borderRadius: BorderRadius.circular(10),), 
+  ));
+}
+
+
+
+void addDestinationListAdd(
+  _valueChangedCountry,
+_valueChangedCity,
+dateDestinitaionIni,
+dateDestinitaionEnd,
+distInpu,
+costCenter,
+mangmentCenter,
+internalOrder,
+pospre,
+graph,
+operation,
+pepElement,
+fund){
+  dataTableRows.add(DataRow(cells: [
+    DataCell(Text(_valueChangedCountry)),
+    DataCell(Text(selectDate1TextDestination)),
+    DataCell(Text(selectDate2TextDestination)),
+  ]));
+  
+   destinationListAdd.add(
+    {
+      "country"             : _valueChangedCountry,
+      "city"                : _valueChangedCity,
+      "dateDestinitaionIni" : selectDate1TextDestination,
+      "dateDestinitaionEnd" : selectDate2TextDestination,
+      "distInpu"            : distInpu.text,
+      "cosCenter"           : costCenter.text,
+      "managmentCenter"     : mangmentCenter.text,
+      "internalOrder"       : internalOrder.text,
+      "pospre"              : pospre.text,
+      "graph"               : graph.text,
+      "operation"           : operation.text,
+      "pepElement"          : pepElement.text,
+      "fund"                : fund.text
+    }
+  );
+
+
+distInpu.clear();
+costCenter.clear();
+mangmentCenter.clear();
+internalOrder.clear();
+pospre.clear();
+graph.clear();
+operation.clear();
+pepElement.clear();
+fund.clear();
+setState(() {
+     EasyLoading.show(status: "Cargando");
+      dataTableRows = dataTableRows;
+      selectDate1TextDestination = "Fecha Inicio";
+      selectDate2TextDestination = "Fecha Fin";
+       EasyLoading.dismiss(animation: false);
+    });
+}
 }
 
