@@ -453,12 +453,13 @@ DataTable myDatatable(){
 
 return(
   DataTable(
-    
+    dividerThickness: 2,
+    headingTextStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
     showBottomBorder: true,
-    checkboxHorizontalMargin: 3,
+    checkboxHorizontalMargin: 10,
     showCheckboxColumn: true,
     headingRowColor:MaterialStateProperty.all(kPrimaryColor),
-    columnSpacing: 30,
+    columnSpacing: 45,
     columns: dataTableColumns,
     rows: getRows(dataTableRows),
     decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),), 
@@ -501,6 +502,7 @@ fund){
   
    destinationListAdd.add(
     {
+      "id"                  : tableID.toString(),
       "country"             : _valueChangedCountry,
       "city"                : _valueChangedCity,
       "dateDestinitaionIni" : selectDate1TextDestination,

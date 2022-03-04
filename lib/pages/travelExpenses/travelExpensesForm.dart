@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msm_mobile_app/components/alertDialog.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer2.dart';
@@ -114,9 +115,20 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                         steps: getSteps(),
                         currentStep: currentStep,
                         onStepTapped: (step) =>
+                            
                             setState(() => currentStep = step),
                         onStepContinue: () {
-                          print(destinationValue);
+                           switch (currentStep) {
+                             case 0:{
+                             
+                                if(associatedValue == null || associatedValue== ""){
+                                alertDialog(context);
+                                currentStep = -1;
+                                }
+                             } 
+                               break;
+                             default:
+                           }
                           final isLastStep =
                               currentStep == getSteps().length - 1;
                               
