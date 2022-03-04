@@ -17,29 +17,31 @@ class FormContainer2 extends StatefulWidget {
   _FormContainer2 createState() => _FormContainer2();
   
 }
-var destinationListAdd = [];
+
 List<DataColumn> dataTableColumns = [
   DataColumn(
+          numeric: true,
           label: Text(
-            'Destino',
+            'ID',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+  DataColumn(
+    
+          label: Text(
+            'País',
             style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
         DataColumn(
           label: Text(
-            'Fecha Inicio',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-        DataColumn(
-          label: Text(
-            'Fecha Fin',
+            'Ciudad',
             style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
 ];
-List<DataRow> dataTableRows = [];
-
+List dataTableRows = [];
+var selectedDestinations =[];
 dynamic  listCities= [
   {
     'value': 'corporativo',
@@ -48,7 +50,7 @@ dynamic  listCities= [
   },  
   ];  
 class _FormContainer2 extends State<FormContainer2> {
-
+  var destinationListAdd = [];
   TextEditingController? _controller;
   TextEditingController? _controlle2;
   var listCountrys;
@@ -67,6 +69,8 @@ class _FormContainer2 extends State<FormContainer2> {
   var operation      = TextEditingController();
   var pepElement     = TextEditingController();
   var fund           = TextEditingController();
+  bool selectedIndex = false;
+  int tableID = 0;
 
 
 
@@ -81,7 +85,7 @@ class _FormContainer2 extends State<FormContainer2> {
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
-        onPressed: (){_showMyDialogMain (context);print(destinationListAdd);},
+        onPressed: (){_showMyDialogMain (context);},
         child: Text("Agregar Destino",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           )),
@@ -387,7 +391,7 @@ Future<void> _showMyDialog2(context) async {
                 enableSearch: true,
                 dialogSearchHint: 'Buscar Ciudad',
                 items: listCities,
-                onChanged: (val)=>{print(listCities), _valueChangedCity = val, print(_valueChangedCity)},
+                onChanged: (val)=>{_valueChangedCity = val, },
                 
               ),
             ])),
@@ -444,19 +448,35 @@ Future<void> _selectDate2(BuildContext context) async {
       });
   }
 
+
 DataTable myDatatable(){
 
 return(
   DataTable(
+    
+    showBottomBorder: true,
+    checkboxHorizontalMargin: 3,
+    showCheckboxColumn: true,
     headingRowColor:MaterialStateProperty.all(kPrimaryColor),
-    columnSpacing: 10,
+    columnSpacing: 30,
     columns: dataTableColumns,
-    rows: dataTableRows,
-    decoration: BoxDecoration(border: Border.all(width: 1.0) , borderRadius: BorderRadius.circular(10),), 
+    rows: getRows(dataTableRows),
+    decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),), 
   ));
 }
 
+List<DataRow> getRows(List dataTableRows)=>dataTableRows.map((item)=>DataRow(
+  selected: selectedDestinations.contains(item),
+  onSelectChanged: (isSelected)=>setState((){
+    final isAdding = isSelected !=null && isSelected;
+    isAdding? selectedDestinations.add(item): selectedDestinations.remove(item);
 
+  }),
+  cells: [
+  DataCell(Text(item['id'])),
+  DataCell(Text(item['country'])),
+  DataCell(Text(item['city'])),
+])).toList();
 
 void addDestinationListAdd(
   _valueChangedCountry,
@@ -472,11 +492,12 @@ graph,
 operation,
 pepElement,
 fund){
-  dataTableRows.add(DataRow(cells: [
-    DataCell(Text(_valueChangedCountry)),
-    DataCell(Text(selectDate1TextDestination)),
-    DataCell(Text(selectDate2TextDestination)),
-  ]));
+  tableID = tableID+1;
+  dataTableRows.add({
+    "id"     : tableID.toString(),
+    "country": _valueChangedCountry,
+    "city"   : _valueChangedCity,
+  });
   
    destinationListAdd.add(
     {
@@ -511,6 +532,8 @@ setState(() {
       dataTableRows = dataTableRows;
       selectDate1TextDestination = "Fecha Inicio";
       selectDate2TextDestination = "Fecha Fin";
+      _valueChangedCity   = "";
+      _valueChangedCountry = "";
        EasyLoading.dismiss(animation: false);
     });
 }

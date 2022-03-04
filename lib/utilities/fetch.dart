@@ -71,7 +71,7 @@ Future<List<Map<String, dynamic>>> destinationFetchData(destination) async {
   }
 }
 Future<List<Map<String, dynamic>>> destinationCityFetchData(destination) async {
-  print(destination);
+ 
   var url =
       'https://www.mv-tel.com/MSM_Viaticos_API_Test/api/Ciudad/$destination';
 
@@ -85,7 +85,7 @@ Future<List<Map<String, dynamic>>> destinationCityFetchData(destination) async {
     for (var i in responseData.destinations) {
       myList.add({'value': '${i.nombre}', 'label': '${i.nombre}'},);
     }
-    print(myList);
+    
     return myList;
   } else {
     final responseData = null;
