@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/components/alertDialog.dart';
+import 'package:msm_mobile_app/components/cameraPicture.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer2.dart';
@@ -24,11 +26,11 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
     this.data,
   );
 
-  void showAlert(BuildContext context) {}
+
 
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    Future.delayed(Duration.zero, () => showAlert(context));
+  
 
     return (Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
@@ -88,29 +90,20 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
                     height: 600,
                     child: Stepper(
-                        controlsBuilder: (BuildContext context,
-                            {VoidCallback? onStepContinue,
-                            VoidCallback? onStepCancel}) {
-                          return Row(
-                            children: [
-                              TextButton(
-                                  onPressed: onStepContinue,
-                                  child: const Text(
-                                    'Continuar',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  )),
-                              TextButton(
-                                onPressed: onStepCancel,
-                                child: const Text('Regresar',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20)),
-                              ),
-                            ],
-                          );
-                        },
+                        controlsBuilder: (BuildContext context, ControlsDetails controls) {
+                  return Row(
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: controls.onStepContinue,
+                        child: const Text('Continuar'),
+                      ),
+                      TextButton(
+                        onPressed: controls.onStepCancel,
+                        child: const Text('Volver'),
+                      ),
+                    ],
+                  );
+                },
                         type: StepperType.vertical,
                         steps: getSteps(),
                         currentStep: currentStep,
@@ -170,7 +163,7 @@ List<Step> getSteps() => [
       Step(
           isActive: currentStep >= 4,
           title: Text("Observaciones"),
-          content: Container()),
+          content: ImagePickerWidget()),
     ];
 
 class SimpleClipper2 extends CustomClipper<Path> {

@@ -5,8 +5,7 @@ import 'package:msm_mobile_app/pages/loginPage.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
+class MyHttpOverrides extends HttpOverrides {  @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =
@@ -14,8 +13,9 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+Future<void> main() async {
   HttpOverrides.global = new MyHttpOverrides();
+
   runApp(MyApp());
 }
 
@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
         DeviceOrientation.portraitDown,
       ]);
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       title: 'MSM',
       theme: ThemeData(
