@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +45,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   }
 
   
-     /*Toma una foto*/
+     /*Take a Picture*/
   Future _takePhoto() async {
     final ImagePicker _picker = ImagePicker();
     var image = await _picker.pickImage(source: ImageSource.camera);
@@ -56,7 +55,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
     });
   }
 
-     /*Álbum*/
+     /*Gallery*/
   _openGallery() async {
     final ImagePicker _picker = ImagePicker();
     var image = await _picker.pickImage(source: ImageSource.gallery);
