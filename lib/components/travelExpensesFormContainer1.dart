@@ -15,8 +15,8 @@ var associatedValue;
 var accountValue;
 var dateValueIni;
 var dateValueEnd;
-var travelObject;
-var sapNumber;
+var travelObject =  TextEditingController();
+var sapNumber    =  TextEditingController();
 dynamic _items3 = [
   {
     'value': 'corporativo',
@@ -103,6 +103,7 @@ class _FormContainer1 extends State<FormContainer1> {
       Container(
           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           child: TextField(
+            controller: travelObject ,
             decoration: InputDecoration(
                 icon: Icon(Icons.bookmark_added_sharp),
                 hintText: 'Objeto del viaje',
@@ -112,6 +113,7 @@ class _FormContainer1 extends State<FormContainer1> {
       Container(
           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           child: TextField(
+            controller: sapNumber,
             decoration: InputDecoration(
                 icon: Icon(Icons.settings_applications_outlined),
                 hintText: 'Número de viaje SAP',
@@ -122,18 +124,30 @@ class _FormContainer1 extends State<FormContainer1> {
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
         onPressed: () => _selectDate(context),
-        child: Text(
-          selectDate1Text,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+        child: Row(
+           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.calendar_month),
+            Text(
+              selectDate1Text,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+          ],
         ),
       ),
       ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
         onPressed: () => _selectDate2(context),
-        child: Text(
-          selectDate2Text,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.calendar_month),
+            Text(
+              selectDate2Text,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+          ],
         ),
       )
     ])));

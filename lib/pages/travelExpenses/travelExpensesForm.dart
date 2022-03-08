@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/components/alertDialog.dart';
 import 'package:msm_mobile_app/components/cameraPicture.dart';
@@ -115,8 +114,28 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                              case 0:{
                              
                                 if(associatedValue == null || associatedValue== ""){
-                                alertDialog(context);
-                                currentStep = -1;
+                                  alertDialog(context, "Destino");
+                                  currentStep = -1;
+                                }
+                                else if(accountValue == null || accountValue ==""){
+                                  alertDialog(context,"Viaje Asociado");
+                                  currentStep = -1;
+                                }
+                                else if(travelObject.text ==""){
+                                  alertDialog(context,"Objeto del Viaje");
+                                  currentStep = -1;
+                                }
+                                else if(sapNumber.text ==""){
+                                  alertDialog(context,"Número Sap");
+                                  currentStep = -1;
+                                }
+                                else if(dateValueIni == null || dateValueIni ==""){
+                                  alertDialog(context,"Viaje Asociado");
+                                  currentStep = -1;
+                                }
+                                else if(dateValueEnd == null || dateValueEnd ==""){
+                                  alertDialog(context,"Viaje Asociado");
+                                  currentStep = -1;
                                 }
                              } 
                                break;

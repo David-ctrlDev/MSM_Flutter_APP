@@ -13,9 +13,8 @@ class MyHttpOverrides extends HttpOverrides {  @override
   }
 }
 
-Future<void> main() async {
+void main()  {
   HttpOverrides.global = new MyHttpOverrides();
-
   runApp(MyApp());
 }
 

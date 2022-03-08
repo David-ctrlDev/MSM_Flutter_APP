@@ -18,7 +18,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
     return SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              _ImageView(_imgPath),
+              imageView(_imgPath),
               ElevatedButton(
                 onPressed: _takePhoto,
                 child: Text ("Foto"),
@@ -31,7 +31,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
           ),
         );
   } 
-  Widget _ImageView(imgPath) {
+  Widget imageView(imgPath) {
     if (imgPath == null) {
       return Center(
                  child:Text("Seleccione una foto o tome una foto"),

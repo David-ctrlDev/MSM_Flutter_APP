@@ -291,6 +291,12 @@ Future<void> _showMyDialogMain(context) async {
            ],),
          )),
    actions: <Widget>[
+     TextButton(
+            child: const Text('Cancelar'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           TextButton(
             child: const Text('Agregar'),
             onPressed: () {
