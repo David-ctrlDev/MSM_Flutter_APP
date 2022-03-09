@@ -65,12 +65,15 @@ class _FormContainer1 extends State<FormContainer1> {
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child: SelectFormField(
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   initialValue: 'nacional',
                   icon: Icon(Icons.public),
                   labelText: 'Destino',
                   items: _items,
                   onChanged: (val) => {destinationValue = val},
+                  changeIcon: true,
+                  hintText:"True"
 
                   //onSaved: (val) => print(val),
                 )),

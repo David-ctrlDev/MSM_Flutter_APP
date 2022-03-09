@@ -50,7 +50,7 @@ dynamic  listCities= [
   },  
   ];  
 class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderStateMixin{
-  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 2))..repeat();
+  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 2),)..repeat();
   var destinationListAdd = [];
   TextEditingController? _controller;
   TextEditingController? _controlle2;
