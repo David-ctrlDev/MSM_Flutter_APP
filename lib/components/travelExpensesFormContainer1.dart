@@ -59,34 +59,36 @@ class _FormContainer1 extends State<FormContainer1> {
     return (SingleChildScrollView(
         child: Column(children: [
       Container(
-          height: 180,
+          height: 190,
           child: Column(children: [
             Card(
+              
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child: SelectFormField(
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  initialValue: 'nacional',
-                  icon: Icon(Icons.public),
-                  labelText: 'Destino',
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.arrow_drop_down_sharp),
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    icon: Icon(Icons.public),
+                    labelText: 'Destino',
+                  ),
                   items: _items,
                   onChanged: (val) => {destinationValue = val},
-                  changeIcon: true,
-                  hintText:"True"
-
+                  initialValue: destinationValue,
+                  
                   //onSaved: (val) => print(val),
                 )),
             Card(
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child: SelectFormField(
-                  
-                  scrollPadding: EdgeInsets.fromLTRB(10, 0, 10, 5),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.arrow_drop_down_sharp),
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    icon: Icon(Icons.public),
+                    labelText: 'Viaje asociado a:',
+                  ),                  
                   initialValue: '',
-                  icon: Icon(Icons.public),
-                  labelText: 'Viaje asociado a:',
                   items: _items2,
                   onChanged: (val) =>
                       {associatedValue = val, func(associatedValue)},
@@ -95,10 +97,14 @@ class _FormContainer1 extends State<FormContainer1> {
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
                 elevation: 4,
                 child: SelectFormField(
-                  hintText: "Recuerda Seleccionar el Viaje",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  icon: Icon(Icons.account_balance_wallet_sharp),
-                  labelText: 'Cuenta Contable:',
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.arrow_drop_down_sharp),
+                    hintText: "Recuerda Seleccionar el Viaje",
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    icon: Icon(Icons.account_balance_wallet_sharp),
+                    labelText: 'Cuenta Contable:',
+                  ),
+                 
                   items: _items3,
                   onChanged: (val) => {accountValue = val},
                 ))

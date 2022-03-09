@@ -114,11 +114,11 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                              case 0:{
                              
                                 if(associatedValue == null || associatedValue== ""){
-                                  alertDialog(context, "Destino");
+                                  alertDialog(context, "Viaje Asociado");
                                   currentStep = -1;
                                 }
                                 else if(accountValue == null || accountValue ==""){
-                                  alertDialog(context,"Viaje Asociado");
+                                  alertDialog(context,"Cuenta Contable");
                                   currentStep = -1;
                                 }
                                 else if(travelObject.text ==""){
@@ -130,11 +130,11 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                                   currentStep = -1;
                                 }
                                 else if(dateValueIni == null || dateValueIni ==""){
-                                  alertDialog(context,"Viaje Asociado");
+                                  alertDialog(context,"Seleccione la fecha de inico del viaje");
                                   currentStep = -1;
                                 }
                                 else if(dateValueEnd == null || dateValueEnd ==""){
-                                  alertDialog(context,"Viaje Asociado");
+                                  alertDialog(context,"Seleccione la fecha de fin del viaje");
                                   currentStep = -1;
                                 }
                              } 
