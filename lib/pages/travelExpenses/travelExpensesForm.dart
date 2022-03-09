@@ -88,29 +88,20 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
                     height: 600,
                     child: Stepper(
-                        controlsBuilder: (BuildContext context,
-                            {VoidCallback? onStepContinue,
-                            VoidCallback? onStepCancel}) {
-                          return Row(
-                            children: [
-                              TextButton(
-                                  onPressed: onStepContinue,
-                                  child: const Text(
-                                    'Continuar',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  )),
-                              TextButton(
-                                onPressed: onStepCancel,
-                                child: const Text('Regresar',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20)),
-                              ),
-                            ],
-                          );
-                        },
+                        controlsBuilder: (BuildContext context, ControlsDetails controls) {
+                  return Row(
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: controls.onStepContinue,
+                        child: const Text('Continuar'),
+                      ),
+                      TextButton(
+                        onPressed: controls.onStepCancel,
+                        child: const Text('Volver'),
+                      ),
+                    ],
+                  );
+                },
                         type: StepperType.vertical,
                         steps: getSteps(),
                         currentStep: currentStep,
@@ -122,8 +113,28 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                              case 0:{
                              
                                 if(associatedValue == null || associatedValue== ""){
-                                alertDialog(context);
-                                currentStep = -1;
+                                  alertDialog(context,);
+                                  currentStep = -1;
+                                }
+                                else if(accountValue == null || accountValue ==""){
+                                  alertDialog(context,);
+                                  currentStep = -1;
+                                }
+                                else if(travelObject.text ==""){
+                                  alertDialog(context,);
+                                  currentStep = -1;
+                                }
+                                else if(sapNumber.text ==""){
+                                  alertDialog(context,);
+                                  currentStep = -1;
+                                }
+                                else if(dateValueIni == null || dateValueIni ==""){
+                                  alertDialog(context,);
+                                  currentStep = -1;
+                                }
+                                else if(dateValueEnd == null || dateValueEnd ==""){
+                                  alertDialog(context,);
+                                  currentStep = -1;
                                 }
                              } 
                                break;
