@@ -72,6 +72,7 @@ class _FormContainer1 extends State<FormContainer1> {
                     icon: Icon(Icons.public),
                     labelText: 'Destino',
                   ),
+                  labelText: 'Destino',
                   items: _items,
                   onChanged: (val) => {destinationValue = val},
                   initialValue: destinationValue,
@@ -87,7 +88,8 @@ class _FormContainer1 extends State<FormContainer1> {
                     labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     icon: Icon(Icons.public),
                     labelText: 'Viaje asociado a:',
-                  ),                  
+                  ),
+                  labelText: 'Destino',                  
                   initialValue: '',
                   items: _items2,
                   onChanged: (val) =>
@@ -104,7 +106,7 @@ class _FormContainer1 extends State<FormContainer1> {
                     icon: Icon(Icons.account_balance_wallet_sharp),
                     labelText: 'Cuenta Contable:',
                   ),
-                 
+                  labelText: 'Destino',
                   items: _items3,
                   onChanged: (val) => {accountValue = val},
                 ))
