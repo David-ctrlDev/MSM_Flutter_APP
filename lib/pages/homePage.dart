@@ -13,8 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String? capitalize(String s) =>
-        s[0].toUpperCase() + s.substring(1).toLowerCase();
+    
     return (Scaffold(
       appBar: AppBar(
         title: Text("Suite MSM"),
@@ -40,11 +39,11 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Saludos ${capitalize(data!.nombres!)}",
+                    "Saludos ${(data!.nombres!)}",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 18,
                     ),
                     textAlign: TextAlign.left,
                   ),
@@ -57,11 +56,11 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Text(
-                "${capitalize(data!.cargo)}",
+                "${(data!.cargo)}",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 14,
                 ),
               )
             ],

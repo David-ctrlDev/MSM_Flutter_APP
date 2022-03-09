@@ -22,20 +22,20 @@ class User {
         required this.tipo,
     });
 
-    int usuarioId;
-    String codigoUsuario;
-    String nombreCodigo;
-    String cedula;
-    String email;
+    int? usuarioId;
+    String? codigoUsuario;
+    String? nombreCodigo;
+    String? cedula;
+    String? email;
     String? nombres;
-    String dependencia;
+    String? dependencia;
     dynamic sede;
-    String ceco;
-    String empresa;
-    String extension;
-    String regimenSalarial;
-    String cargo;
-    int tipo;
+    String? ceco;
+    String? empresa;
+    String? extension;
+    String? regimenSalarial;
+    String? cargo;
+    int? tipo;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
         usuarioId: json["usuarioId"],

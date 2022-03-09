@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
+import 'package:msm_mobile_app/components/toastCustom.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/pages/travelExpenses/travelExpensesForm.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
@@ -40,7 +41,7 @@ class TravelExpensesMenu extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 18,
                     ),
                     textAlign: TextAlign.left,
                   ),
@@ -57,7 +58,7 @@ class TravelExpensesMenu extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 14,
                 ),
               )
             ],
@@ -105,10 +106,12 @@ ListView travelExpensesView(context,data){
     ListView(
       children: [
             InkWell(
-              onTap:()=> Navigator.push(
+              onTap:() {
+              Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TravelExpensesForm(data),),),
+                                builder: (context) =>TravelExpensesForm(data),));
+                                showToast(context);},
               child:Container(
               height: 100,
               padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
