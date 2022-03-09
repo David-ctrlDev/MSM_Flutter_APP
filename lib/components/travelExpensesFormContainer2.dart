@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'dart:math' as math;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
@@ -49,7 +49,8 @@ dynamic  listCities= [
     'icon': Icon(Icons.warning_rounded)
   },  
   ];  
-class _FormContainer2 extends State<FormContainer2> {
+class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderStateMixin{
+  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 2))..repeat();
   var destinationListAdd = [];
   TextEditingController? _controller;
   TextEditingController? _controlle2;
@@ -81,7 +82,14 @@ class _FormContainer2 extends State<FormContainer2> {
     return (Container(
       width:MediaQuery.of(context).size.width ,
       child: Column(
-        children: [
+        children: [AnimatedBuilder(
+          animation: _controllerAnimation,
+          builder: (_, child) {
+            return Transform.rotate(
+              angle: _controllerAnimation.value * 2 * math.pi,
+              child: Image.asset('assets/images/worldImage.png', width: 100,),
+            );
+          },),
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),

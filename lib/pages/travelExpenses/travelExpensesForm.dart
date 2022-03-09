@@ -67,7 +67,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 18,
                                 ),
                                 textAlign: TextAlign.left,
                               )
@@ -78,7 +78,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 14,
                             ),
                           )
                         ],
