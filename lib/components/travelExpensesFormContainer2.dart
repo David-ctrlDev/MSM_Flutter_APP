@@ -481,7 +481,7 @@ return(
     checkboxHorizontalMargin: 10,
     showCheckboxColumn: true,
     headingRowColor:MaterialStateProperty.all(kPrimaryColor),
-    columnSpacing: 30,
+    columnSpacing: 15,
     columns: dataTableColumns,
     rows: getRows(dataTableRows),
     decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),), 
