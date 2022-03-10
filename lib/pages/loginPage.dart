@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: WaveClipperTwo(),
             child: Container(
-              height: size.height / 8,
+              height: size.height / 12,
               color: kPrimaryColor,
             ),
           ),
@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
           ClipPath(
               clipper: WaveClipperTwo(reverse: true),
               child: Container(
-                height: size.height / 4.8,
+                height: size.height / 4.6,
                 color: kPrimaryColor,
                 child: SizedBox(
                   child: Padding(
@@ -191,35 +191,3 @@ class LoginColumn extends StatelessWidget {
   }
 }
 
-class GreenClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = new Path();
-    path.lineTo(0, size.height - 50);
-
-    var firstStart = Offset(size.width / 5, size.height);
-    //fist point of quadratic bezier curve
-    var firstEnd = Offset(size.width / 2.25, size.height - 50.0);
-    //second point of quadratic bezier curve
-    path.quadraticBezierTo(
-        firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
-
-    var secondStart =
-        Offset(size.width - (size.width / 3.24), size.height - 105);
-    //third point of quadratic bezier curve
-    var secondEnd = Offset(size.width, size.height - 20);
-    //fourth point of quadratic bezier curve
-    path.quadraticBezierTo(
-        secondStart.dx, secondStart.dy, secondEnd.dx, secondEnd.dy);
-
-    path.lineTo(
-        size.width, 0); //end with this path if you are making wave at bottom
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper oldClipper) {
-    return false;
-  }
-}

@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
         
         Container(
             padding: EdgeInsets.fromLTRB(10, 0, 30, 20),
-            height: 150,
+            height: size.height/4.8,
             width: 400,
             
             child: ListView(
@@ -130,18 +130,18 @@ class HomePage extends StatelessWidget {
               ],
             )),
             Row(children: [
-          Padding(padding: EdgeInsets.fromLTRB(20, 40, 20, 0)),
+          Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 0)),
           Text(
             "Servicios",
             style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Helvetica'),
           )
         ]),
         Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-          height: 500,
+          height: size.height/2,
           width: 400,
           child: ListviewHome(data,
         ),

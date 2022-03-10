@@ -19,6 +19,7 @@ class FormContainer2 extends StatefulWidget {
 }
 
 List<DataColumn> dataTableColumns = [
+  
   DataColumn(
           numeric: true,
           label: Text(
@@ -39,6 +40,12 @@ List<DataColumn> dataTableColumns = [
             style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
+        DataColumn(
+        
+          label: Icon(
+           Icons.flag_rounded,color:Colors.white,
+          ),
+        ),
 ];
 List dataTableRows = [];
 var selectedDestinations =[];
@@ -50,7 +57,7 @@ dynamic  listCities= [
   },  
   ];  
 class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderStateMixin{
-  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 2),)..repeat();
+  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 7),)..repeat();
   var destinationListAdd = [];
   TextEditingController? _controller;
   TextEditingController? _controlle2;
@@ -351,6 +358,7 @@ Future<void> _showMyDialog(context) async {
           child:Column(
             children: <Widget>[
               SelectFormField(
+                
                 textCapitalization:TextCapitalization.none,
                 type: SelectFormFieldType.dialog,
                 controller: _controller,
@@ -473,7 +481,7 @@ return(
     checkboxHorizontalMargin: 10,
     showCheckboxColumn: true,
     headingRowColor:MaterialStateProperty.all(kPrimaryColor),
-    columnSpacing: 45,
+    columnSpacing: 30,
     columns: dataTableColumns,
     rows: getRows(dataTableRows),
     decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),), 
@@ -491,6 +499,7 @@ List<DataRow> getRows(List dataTableRows)=>dataTableRows.map((item)=>DataRow(
   DataCell(Text(item['id'])),
   DataCell(Text(item['country'])),
   DataCell(Text(item['city'])),
+  DataCell((item['flag'])),
 ])).toList();
 
 void addDestinationListAdd(
@@ -512,6 +521,7 @@ fund){
     "id"     : tableID.toString(),
     "country": _valueChangedCountry,
     "city"   : _valueChangedCity,
+    "flag"   : Image.asset('assets/images/$_valueChangedCountry.png',width: 50,) 
   });
   
    destinationListAdd.add(

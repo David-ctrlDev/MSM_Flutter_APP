@@ -23,6 +23,7 @@ GridView myGridView(context,data) {
       // Generate 100 widgets that display their index in the List.
       children: [
         Card(
+              
             elevation: 10,
             margin: EdgeInsets.all(15),
             shape:

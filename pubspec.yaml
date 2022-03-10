@@ -78,6 +78,12 @@ flutter:
       - assets/images/viaticosLegalizacionIcon.png
       - assets/images/viaticosList.png
       - assets/images/worldImage.png
+      - assets/images/COL.png
+      - assets/images/ESP.png
+      - assets/images/GBR.png
+      - assets/images/ITA.png
+      - assets/images/FRA.png
+      - assets/images/USA.png
 
 
   #   - images/a_dot_ham.jpeg

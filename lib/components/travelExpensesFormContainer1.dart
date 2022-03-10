@@ -93,7 +93,9 @@ class _FormContainer1 extends State<FormContainer1> {
                   initialValue: '',
                   items: _items2,
                   onChanged: (val) =>
-                      {associatedValue = val, func(associatedValue)},
+                      {associatedValue = val, func(associatedValue), setState(() {
+                        accountValue = "";
+                      })},
                 )),
             Card(
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
@@ -106,7 +108,7 @@ class _FormContainer1 extends State<FormContainer1> {
                     icon: Icon(Icons.account_balance_wallet_sharp),
                     labelText: 'Cuenta Contable:',
                   ),
-                  labelText: 'Destino',
+                  labelText: 'Cuenta Contable',
                   items: _items3,
                   onChanged: (val) => {accountValue = val},
                 ))
