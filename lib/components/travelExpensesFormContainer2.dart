@@ -521,7 +521,7 @@ fund){
     "id"     : tableID.toString(),
     "country": _valueChangedCountry,
     "city"   : _valueChangedCity,
-    "flag"   : Image.asset('assets/images/$_valueChangedCountry.png',width: 50,) 
+    "flag"   : Image.asset('assets/images/flags/$_valueChangedCountry.png',width: 32,) 
   });
   
    destinationListAdd.add(

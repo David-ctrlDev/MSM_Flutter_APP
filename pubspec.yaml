@@ -78,12 +78,29 @@ flutter:
       - assets/images/viaticosLegalizacionIcon.png
       - assets/images/viaticosList.png
       - assets/images/worldImage.png
-      - assets/images/COL.png
-      - assets/images/ESP.png
-      - assets/images/GBR.png
-      - assets/images/ITA.png
-      - assets/images/FRA.png
-      - assets/images/USA.png
+      - assets/images/flags/COL.png
+      - assets/images/flags/ESP.png
+      - assets/images/flags/GBR.png
+      - assets/images/flags/ITA.png
+      - assets/images/flags/FRA.png
+      - assets/images/flags/USA.png
+      - assets/images/flags/ARG.png
+      - assets/images/flags/BRA.png
+      - assets/images/flags/CHN.png
+      - assets/images/flags/DEU.png
+      - assets/images/flags/JPN.png
+      - assets/images/flags/RUS.png
+      - assets/images/flags/MEX.png
+      - assets/images/flags/PRT.png
+      - assets/images/flags/CHL.png
+      - assets/images/flags/CAN.png
+      - assets/images/flags/PER.png
+      - assets/images/flags/NLD.png
+      - assets/images/flags/KOR.png
+      - assets/images/flags/BEL.png
+
+
+
 
 
   #   - images/a_dot_ham.jpeg
