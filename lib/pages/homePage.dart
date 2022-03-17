@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
       floatingActionButtonAnimator:FloatingActionButtonAnimator.scaling ,
       body: Wrap(children: [
         Container(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           width: MediaQuery.of(context).size.width * 1,
           height: size.height * 0.2 - 47,
           decoration: BoxDecoration(
@@ -48,11 +48,15 @@ class HomePage extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Spacer(),
-                  Icon(
-                    Icons.coronavirus_sharp,
-                    color: Colors.white,
-                    size: 30,
-                  )
+                  Column(
+                    
+                    children:[ Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                     color: Colors.white, ),
+                      
+                      child: ClipRRect(child: Image.asset('assets/images/companiesLogos/${data!.empresa}.png',width: 70 ))),
+                 ])
                 ],
               ),
               Text(

@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:msm_mobile_app/pages/loginPage.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:msm_mobile_app/pages/prePage.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
 class MyHttpOverrides extends HttpOverrides {  @override
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         textTheme: GoogleFonts.robotoTextTheme()
       ),
-      home: Login(),
+      home: PrePage(),
       builder: EasyLoading.init(),
       
     );

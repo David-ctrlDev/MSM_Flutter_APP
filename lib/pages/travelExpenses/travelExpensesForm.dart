@@ -36,7 +36,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
         floatingActionButton: DraggableButton(),
         floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
         appBar: AppBar(
-          title: Text("${data!.cargo}"),
+          title: Text("Suite MSM"),
           elevation: 0,
           backgroundColor: kPrimaryColor,
         ),
@@ -63,7 +63,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                           Row(
                             children: [
                               Text(
-                                "Saludos ${(data!.nombres!)}",
+                                "${(data!.nombres!)}",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
