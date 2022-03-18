@@ -86,7 +86,7 @@ class _FormContainer1 extends State<FormContainer1> {
                   decoration: InputDecoration(
                     suffixIcon: Icon(Icons.arrow_drop_down_sharp),
                     labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                    icon: Icon(Icons.public),
+                    icon: Icon(Icons.wallet_travel_rounded),
                     labelText: 'Viaje asociado a:',
                   ),
                   labelText: 'Destino',                  

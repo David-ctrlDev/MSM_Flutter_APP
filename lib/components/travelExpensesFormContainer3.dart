@@ -1,6 +1,7 @@
 
+import 'package:animated_widgets/widgets/rotation_animated.dart';
+import 'package:animated_widgets/widgets/shake_animated_widget.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
@@ -11,10 +12,10 @@ import 'package:select_form_field/select_form_field.dart';
 
 
 
-class FormContainer2 extends StatefulWidget {
+class FormContainer3 extends StatefulWidget {
 
  
-  _FormContainer2 createState() => _FormContainer2();
+  _FormContainer3 createState() => _FormContainer3();
   
 }
 
@@ -57,8 +58,8 @@ dynamic  listCities= [
     'icon': Icon(Icons.warning_rounded)
   },  
   ];  
-class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderStateMixin{
-  late final AnimationController _controllerAnimation = AnimationController(vsync: this, duration: Duration(seconds: 7),)..repeat();
+class _FormContainer3 extends State<FormContainer3>{
+  
  
   TextEditingController? _controller;
   TextEditingController? _controlle2;
@@ -90,19 +91,20 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
     return (Container(
       width:MediaQuery.of(context).size.width ,
       child: Column(
-        children: [AnimatedBuilder(
-          animation: _controllerAnimation,
-          builder: (_, child) {
-            return Transform.rotate(
-              angle: _controllerAnimation.value * 2 * math.pi,
-              child: Image.asset('assets/images/worldImage.png', width: 100,),
-            );
-          },),
+        children: [
+          ShakeAnimatedWidget(
+              enabled: true,
+              duration: Duration(milliseconds: 1000),
+              shakeAngle: Rotation.deg(z: 1),
+              curve: Curves.linear,
+              child: Image.asset('assets/images/busImage.png', width: 100,),
+      ),
+    
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
         onPressed: (){_showMyDialogMain (context);},
-        child: Text("Agregar Destino",
+        child: Text("Agregar Desplazamiento",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           )),
         myDatatable(),

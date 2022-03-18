@@ -4,6 +4,7 @@ import 'package:msm_mobile_app/components/cameraPicture.dart';
 import 'package:msm_mobile_app/components/draggableActionButton.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer1.dart';
 import 'package:msm_mobile_app/components/travelExpensesFormContainer2.dart';
+import 'package:msm_mobile_app/components/travelExpensesFormContainer3.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
@@ -110,7 +111,7 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                             
                             setState(() => currentStep = step),
                         onStepContinue: () {
-                           switch (currentStep) {
+                             switch (currentStep) {
                              case 0:{
                              
                                 if(associatedValue == null || associatedValue== ""){
@@ -174,7 +175,7 @@ List<Step> getSteps() => [
       Step(
           isActive: currentStep >= 2,
           title: Text("Desplazamientos Aeroportuarios"),
-          content: Container()),
+          content: FormContainer3()),
       Step(
           isActive: currentStep >= 3,
           title: Text("Gestiones Adicionales"),

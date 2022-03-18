@@ -34,18 +34,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 2000,),()
-    {Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>Login(),));});
+    Future.delayed(const Duration(milliseconds: 1300,),()
+    {Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Login()),
+                                  (Route<dynamic> route) => false,
+);});
     return Container(
    
      width: MediaQuery.of(context).size.width,
      child: Column(
        children: [
          FadeIn(child: Image.asset('assets/images/mvtellogo.png',height:100,),
-         duration: Duration(milliseconds: 600),
+         duration: Duration(milliseconds: 650),
          curve: Curves.easeIn,),
          
        ],
