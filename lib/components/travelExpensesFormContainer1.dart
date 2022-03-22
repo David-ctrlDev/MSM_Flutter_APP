@@ -8,6 +8,7 @@ class FormContainer1 extends StatefulWidget {
   _FormContainer1 createState() => _FormContainer1();
 }
 
+
 var selectDate1Text = "Seleccione Fecha Inicio";
 var selectDate2Text = "Seleccione Fecha Fin";
 var destinationValue = "nacional";

@@ -5,6 +5,7 @@ import 'package:msm_mobile_app/components/listViewHomePage.dart';
 import 'package:msm_mobile_app/models/login_response.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
+
 class HomePage extends StatelessWidget {
   final User? data;
   HomePage({
@@ -40,11 +41,11 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Saludos ${(data!.nombres!)}",
+                    "Saludos ${data!.nombres?.split(" ")[0]}",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: size.height /40,
                     ),
                     textAlign: TextAlign.left,
                   ),

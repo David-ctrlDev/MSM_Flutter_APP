@@ -37,7 +37,7 @@ class TravelExpensesMenu extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Saludos ${(data!.nombres!)}",
+                    "Saludos ${data!.nombres?.split(" ")[0]}",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -146,6 +146,7 @@ ListView travelExpensesView(context,data){
             )),
           InkWell(
           onTap:()=> Navigator.push(
+        
                               context,
                               MaterialPageRoute(
                                 builder: (context) => TravelExpensesForm(data),),),
