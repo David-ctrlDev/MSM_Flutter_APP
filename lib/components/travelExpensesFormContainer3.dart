@@ -226,7 +226,6 @@ List<DataRow> getRows(List dataTableRows)=>dataTableRows.map((item)=>DataRow(
 void addDestinationListAdd(
   _valueChangedAirport, 
 ){
-  print(_valueChangedAirport);
 
   tableID = tableID+1;
   dataTableRows.add({
@@ -239,6 +238,8 @@ void addDestinationListAdd(
     {
       "id"                  : tableID.toString(),
       "airport"             : _valueChangedAirport,
+      "flyNumber"           : flyNumber.text,
+      "aditionalInfo"       : aditionalInfo.text
     }
   );
 setState(() {
@@ -250,7 +251,7 @@ setState(() {
        EasyLoading.dismiss(animation: false);
        
     });
-    
+    print(airPortsListAdd);
 }
 
 }
