@@ -65,7 +65,7 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
   var listCountrys;
   var dateDestinitaionIni;
   var dateDestinitaionEnd;
-   var _valueChangedCity   = "";
+  var _valueChangedCity   = "";
   var _valueChangedCountry = "";
   var selectDate1TextDestination = "Fecha Inicio";
   var selectDate2TextDestination = "Fecha Fin";
