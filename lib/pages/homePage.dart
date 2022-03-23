@@ -53,11 +53,12 @@ class HomePage extends StatelessWidget {
                   Column(
                     
                     children:[ Container(
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                      color: Colors.white, ),
                       
-                      child: ClipRRect(child: Image.asset('assets/images/companiesLogos/${data!.empresa}.png',width: 70 ))),
+                      child: ClipRRect(child: Image.asset('assets/images/companiesLogos/${data!.empresa}.png',width: 65 ))),
                  ])
                 ],
               ),

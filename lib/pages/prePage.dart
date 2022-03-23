@@ -34,7 +34,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1300,),()
+    Future.delayed(const Duration(milliseconds: 1500,),()
     {Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(builder: (context) => Login()),

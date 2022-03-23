@@ -177,8 +177,10 @@ Future<void> _showMyDialogMain(context) async {
             onPressed: () {
               if (destinationValue == 'internacional'){
                 _valueChangedAirport = airPort.text;
-              print(_valueChangedAirport)  ;
+              
               addDestinationListAdd(_valueChangedAirport);
+
+
               }
               
             else{
@@ -251,7 +253,6 @@ setState(() {
        EasyLoading.dismiss(animation: false);
        
     });
-    print(airPortsListAdd);
 }
 
 }

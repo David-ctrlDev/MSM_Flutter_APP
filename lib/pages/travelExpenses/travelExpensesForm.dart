@@ -32,135 +32,160 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
     Size size = MediaQuery.of(context).size;
   
 
-    return (Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-        floatingActionButton: DraggableButton(),
-        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-        appBar: AppBar(
-          title: Text("Suite MSM"),
-          elevation: 0,
-          backgroundColor: kPrimaryColor,
-        ),
-        body: SingleChildScrollView(
-            child: Theme(
-                data: ThemeData(
-                  colorScheme: Theme.of(context)
-                      .colorScheme
-                      .copyWith(primary: kPrimaryColor),
-                ),
-                child: Wrap(children: [
-                  ClipPath(
-                    clipper: SimpleClipper2(),
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                      width: MediaQuery.of(context).size.width * 1,
-                      height: size.height * 0.3 - 100,
-                      decoration: BoxDecoration(
-                        color: kPrimaryColor,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "${(data!.nombres!)}",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                                textAlign: TextAlign.left,
-                              )
-                            ],
-                          ),
-                          Text(
-                            "${(data!.cargo)}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
+    return WillPopScope(
+      onWillPop:() => _showMyDialog2(),
+      child: (Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+          floatingActionButton: DraggableButton(),
+          floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+          appBar: AppBar(
+            title: Text("Suite MSM"),
+            elevation: 0,
+            backgroundColor: kPrimaryColor,
+          ),
+          body: SingleChildScrollView(
+              child: Theme(
+                  data: ThemeData(
+                    colorScheme: Theme.of(context)
+                        .colorScheme
+                        .copyWith(primary: kPrimaryColor),
+                  ),
+                  child: Wrap(children: [
+                    ClipPath(
+                      clipper: SimpleClipper2(),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        width: MediaQuery.of(context).size.width * 1,
+                        height: size.height * 0.3 - 100,
+                        decoration: BoxDecoration(
+                          color: kPrimaryColor,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "${(data!.nombres!)}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                )
+                              ],
                             ),
-                          )
-                        ],
+                            Text(
+                              "${(data!.cargo)}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
-                    height: 600,
-                    child: Stepper(
-                        controlsBuilder: (BuildContext context, ControlsDetails controls) {
-                  return Row(
-                    children: <Widget>[
-                      TextButton(
-                        onPressed: controls.onStepContinue,
-                        child: const Text('Continuar'),
-                      ),
-                      TextButton(
-                        onPressed: controls.onStepCancel,
-                        child: const Text('Volver'),
-                      ),
-                    ],
-                  );
-                },
-                        type: StepperType.vertical,
-                        steps: getSteps(),
-                        currentStep: currentStep,
-                        onStepTapped: (step) =>
-                            
-                            setState(() => currentStep = step),
-                        onStepContinue: () {
-                             switch (currentStep) {
-                             case 0:{
-                             
-                                if(associatedValue == null || associatedValue== ""){
-                                  alertDialog(context, "Viaje Asociado");
-                                  currentStep = -1;
-                                }
-                                else if(accountValue == null || accountValue ==""){
-                                  alertDialog(context,"Cuenta Contable");
-                                  currentStep = -1;
-                                }
-                                else if(travelObject.text ==""){
-                                  alertDialog(context,"Objeto del Viaje");
-                                  currentStep = -1;
-                                }
-                                else if(sapNumber.text ==""){
-                                  alertDialog(context,"Número Sap");
-                                  currentStep = -1;
-                                }
-                                else if(dateValueIni == null || dateValueIni ==""){
-                                  alertDialog(context,"Seleccione la fecha de inico del viaje");
-                                  currentStep = -1;
-                                }
-                                else if(dateValueEnd == null || dateValueEnd ==""){
-                                  alertDialog(context,"Seleccione la fecha de fin del viaje");
-                                  currentStep = -1;
-                                }
-                             } 
-                               break;
-                             default:
-                           }
-                          final isLastStep =
-                              currentStep == getSteps().length - 1;
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
+                      height: 600,
+                      child: Stepper(
+                          controlsBuilder: (BuildContext context, ControlsDetails controls) {
+                    return Row(
+                      children: <Widget>[
+                        TextButton(
+                          onPressed: controls.onStepContinue,
+                          child: const Text('Continuar'),
+                        ),
+                        TextButton(
+                          onPressed: controls.onStepCancel,
+                          child: const Text('Volver'),
+                        ),
+                      ],
+                    );
+                  },
+                          type: StepperType.vertical,
+                          steps: getSteps(),
+                          currentStep: currentStep,
+                          onStepTapped: (step) =>
                               
-                          if (isLastStep) {
-                            print(destinationValue +
-                                associatedValue +
-                                accountValue +
-                                dateValueIni.toString() +
-                                dateValueEnd.toString());
-                          } else {
-                            setState(() => currentStep += 1);
-                          }
-                        },
-                        onStepCancel: currentStep == 0
-                            ? null
-                            : () => setState(() => currentStep -= 1)),
-                  ),
-                ])))));
+                              setState(() => currentStep = step),
+                          onStepContinue: () {
+                               switch (currentStep) {
+                               case 0:{
+                               
+                                  if(associatedValue == null || associatedValue== ""){
+                                    alertDialog(context, "Viaje Asociado");
+                                    currentStep = -1;
+                                  }
+                                  else if(accountValue == null || accountValue ==""){
+                                    alertDialog(context,"Cuenta Contable");
+                                    currentStep = -1;
+                                  }
+                                  else if(travelObject.text ==""){
+                                    alertDialog(context,"Objeto del Viaje");
+                                    currentStep = -1;
+                                  }
+                                  else if(sapNumber.text ==""){
+                                    alertDialog(context,"Número Sap");
+                                    currentStep = -1;
+                                  }
+                                  else if(dateValueIni == null || dateValueIni ==""){
+                                    alertDialog(context,"Seleccione la fecha de inico del viaje");
+                                    currentStep = -1;
+                                  }
+                                  else if(dateValueEnd == null || dateValueEnd ==""){
+                                    alertDialog(context,"Seleccione la fecha de fin del viaje");
+                                    currentStep = -1;
+                                  }
+                               } 
+                                 break;
+                               default:
+                             }
+                            final isLastStep =
+                                currentStep == getSteps().length - 1;
+                                
+                            if (isLastStep) {
+                              print(destinationValue +
+                                  associatedValue +
+                                  accountValue +
+                                  dateValueIni.toString() +
+                                  dateValueEnd.toString());
+                            } else {
+                              setState(() => currentStep += 1);
+                            }
+                          },
+                          onStepCancel: currentStep == 0
+                              ? null
+                              : () => setState(() => currentStep -= 1)),
+                    ),
+                  ]))))),
+    );
   }
+Future<bool> _showMyDialog2() async {
+
+  return await showDialog(
+    context: context,
+    builder: (BuildContext context,) {
+      return AlertDialog(
+        title: const Text('¿Seguro quieres regresar a la página anterior?',style: TextStyle(fontWeight: FontWeight.bold),),
+        content: Text("Existen datos sin guardar"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Sí'),
+            onPressed: () =>{
+                travelObject.clear(),
+               Navigator.of(context).pop(true)}),
+          TextButton(
+            child: const Text('No'),
+            onPressed: ()=> 
+               Navigator.of(context).pop(false))]);
+
+    });
+}
+
 }
 
 List<Step> getSteps() => [
