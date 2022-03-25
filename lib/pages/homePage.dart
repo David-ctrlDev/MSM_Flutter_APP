@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           width: MediaQuery.of(context).size.width * 1,
-          height: size.height * 0.2 - 47,
+          height: size.height * 0.2 - 30,
           decoration: BoxDecoration(
               color: kPrimaryColor,
               borderRadius: BorderRadius.only(
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
         Container(
             padding: EdgeInsets.fromLTRB(5, 8, 5, 5),
             height: size.height/4.6,
-            width: 400,
+            width: size.width,
             
             child:ComplicatedImageDemo(),
             ),
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
         Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           height: size.height/2,
-          width: 400,
+          width: size.width/1,
           child: ListviewHome(data,
         ),
         

@@ -27,7 +27,7 @@ class TravelExpensesMenu extends StatelessWidget {
         child:Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           width: MediaQuery.of(context).size.width * 1,
-          height: size.height * 0.3 - 47,
+          height: size.height * 0.3 - 28,
           decoration: BoxDecoration(
               color: kPrimaryColor,
           ),
@@ -49,11 +49,12 @@ class TravelExpensesMenu extends StatelessWidget {
                   Column(
                     
                     children:[ Container(
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                      color: Colors.white, ),
                       
-                      child: ClipRRect(child: Image.asset('assets/images/companiesLogos/${data!.empresa}.png',width: 70 ))),
+                      child: ClipRRect(child: Image.asset('assets/images/companiesLogos/${data!.empresa}.png',width: 65 ))),
                  ])
                 ],
               ),

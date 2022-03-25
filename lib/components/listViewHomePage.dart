@@ -16,6 +16,7 @@ class ListviewHome extends StatelessWidget {
 
 GridView myGridView(context,data) {
   return (GridView(
+    
       // Create a grid with 2 columns. If you change the scrollDirection to
       // horizontal, this produces 2 rows.
       gridDelegate:
@@ -37,18 +38,18 @@ GridView myGridView(context,data) {
                                 builder: (context) => TravelExpensesMenu(data),),),
                   title: Text(
                     "Viáticos",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: MediaQuery.of(context).size.width/20),
                   ),
                   subtitle: Container(
                       child: Column(children: [
                     Text(
                       "Bonificaciones y legalizaciones",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width/35),
                     ),
                     Image.asset(
                       'assets/images/viaticosImage.png',
-                      width: 70,
+                      width: MediaQuery.of(context).size.width/5,
                     ),
                   ])),
                 )
