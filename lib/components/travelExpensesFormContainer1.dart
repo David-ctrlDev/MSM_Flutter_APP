@@ -32,6 +32,7 @@ class _FormContainer1 extends State<FormContainer1> {
   DateTime currentDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
+        helpText: "Selecciona Una Fecha",
         context: context,
         initialDate: currentDate,
         firstDate: DateTime(2015),
@@ -46,6 +47,7 @@ class _FormContainer1 extends State<FormContainer1> {
 
   Future<void> _selectDate2(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
+        helpText: "Selecciona Una Fecha",
         context: context,
         initialDate: currentDate,
         firstDate: DateTime(2015),

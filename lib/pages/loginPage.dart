@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
           backgroundColor: kPrimaryColor,
           title: Text(
             "MSM SUITE",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: size.width/30),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: size.width/22),
           ),
         ),
         body: SingleChildScrollView(
@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
           ClipPath(
               clipper: WaveClipperTwo(reverse: true),
               child: Container(
-                height: size.height / 4.5,
+                height: size.height / 4.4,
                 color: kPrimaryColor,
                 child: SizedBox(
                   child: Padding(
@@ -80,7 +80,7 @@ class LoginColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height/1.68,
+      height: MediaQuery.of(context).size.height/1.65,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -89,13 +89,13 @@ class LoginColumn extends StatelessWidget {
               child: Center(
                   child: Image.asset(
                 'assets/images/loginImage2.png',
-                height: MediaQuery.of(context).size.height/3,
+                height: MediaQuery.of(context).size.height/3.5,
               ))),
           SizedBox(
               width: MediaQuery.of(context).size.width/1.6,
               child: TextFormField(
                 controller: user,
-                style: TextStyle(fontSize:MediaQuery.of(context).size.width/30 ),
+                style: TextStyle(fontSize:MediaQuery.of(context).size.width/25 ),
                 decoration: const InputDecoration(
                     icon: Icon(
                       Icons.person,
@@ -108,7 +108,7 @@ class LoginColumn extends StatelessWidget {
           SizedBox(
               width: MediaQuery.of(context).size.width/1.6,
               child: TextFormField(
-                style: TextStyle(fontSize:MediaQuery.of(context).size.width/30 ),
+                style: TextStyle(fontSize:MediaQuery.of(context).size.width/25 ),
                 controller: password,
                 obscureText: true,
                 decoration: const InputDecoration(

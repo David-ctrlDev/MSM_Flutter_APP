@@ -177,6 +177,16 @@ Future<bool> _showMyDialog2() async {
             child: const Text('Sí'),
             onPressed: () =>{
                 travelObject.clear(),
+                sapNumber.clear(),
+                setState(() {
+                  accountValue = "";
+                  associatedValue = "";
+                  dateValueEnd = "";
+                  dateValueIni = "";
+                  selectDate1Text = "Seleccione Fecha Inicio";
+                  selectDate2Text = "Seleccione Fecha Fin";
+                }),
+
                Navigator.of(context).pop(true)}),
           TextButton(
             child: const Text('No'),
