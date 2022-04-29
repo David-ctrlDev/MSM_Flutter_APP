@@ -81,7 +81,7 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
   var fund           = TextEditingController();
   bool selectedIndex = false;
   int tableID = 0;
-
+  bool visibility = false;
 
 
 
@@ -102,11 +102,40 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
           ElevatedButton(
         style: ButtonStyle(
             fixedSize: MaterialStateProperty.all(Size.fromWidth(220))),
-        onPressed: (){_showMyDialogMain (context);},
+        onPressed: (){_showMyDialogMain (context);}, 
         child: Text("Agregar Destino",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           )),
         myDatatable(),
+        Visibility(
+          visible: visibility,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(15),),
+            child: Icon(Icons.delete),
+              onPressed: () {
+                for (var i in selectedDestinations){
+                 
+                  destinationListAdd.removeWhere(
+                    (item) => item['id'] == i['id']);
+                  selectedDestinations.remove(i);
+                  dataTableRows.remove(i);
+        
+                  setState(() {
+                    destinationListAdd = destinationListAdd;
+                    dataTableRows = dataTableRows;
+                    selectedDestinations = selectedDestinations;
+                    visibility = !visibility;
+                  });
+        
+                
+                }
+                
+              },
+            ),
+        ),
+          
      ])));
       
   }
@@ -243,6 +272,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: costCenter,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Centro de Costos',
@@ -259,6 +289,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: mangmentCenter,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Centro Gestor',
@@ -275,6 +306,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: internalOrder,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Orden Interna',
@@ -291,6 +323,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: pospre,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Pospre',
@@ -307,6 +340,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: graph,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Grafo',
@@ -323,6 +357,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: operation,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Operación',
@@ -339,6 +374,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: pepElement,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Elemento PeP',
@@ -355,6 +391,7 @@ Future<void> _showMyDialogMain(context) async {
                   }
                     return null;
                 },
+                controller: fund,
                             decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 labelText: 'Fondo',
@@ -444,7 +481,7 @@ Future<void> _showMyDialog(context) async {
             child: const Text('Agregar'),
             onPressed: () {
               Navigator.of(context).pop();
-            },
+        },
           ),
         ],
       );
@@ -554,6 +591,10 @@ return(
 List<DataRow> getRows(List dataTableRows)=>dataTableRows.map((item)=>DataRow(
   selected: selectedDestinations.contains(item),
   onSelectChanged: (isSelected)=>setState((){
+          
+          visibility = !visibility;
+          
+       
     final isAdding = isSelected !=null && isSelected;
     isAdding? selectedDestinations.add(item): selectedDestinations.remove(item);
 
@@ -603,6 +644,7 @@ fund){
       "operation"           : operation.text,
       "pepElement"          : pepElement.text,
       "fund"                : fund.text
+
     }
   );
 

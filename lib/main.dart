@@ -6,7 +6,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:msm_mobile_app/pages/prePage.dart';
 import 'package:msm_mobile_app/utilities/constants.dart';
 
-class MyHttpOverrides extends HttpOverrides {  @override
+class MyHttpOverrides extends HttpOverrides {  
+  @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =

@@ -152,7 +152,8 @@ class _TravelExpensesFormState extends State<TravelExpensesForm> {
                                   associatedValue +
                                   accountValue +
                                   dateValueIni.toString() +
-                                  dateValueEnd.toString());
+                                  dateValueEnd.toString()+
+                                  destinationListAdd.toString());
                             } else {
                               setState(() => currentStep += 1);
                             }

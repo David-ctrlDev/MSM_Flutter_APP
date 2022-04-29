@@ -34,7 +34,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   Widget imageView(imgPath) {
     if (imgPath == null) {
       return Center(
-                 child:Text("Seleccione una foto o tome una foto"),
+                 child:Text("Selecciona una imagen o toma una foto"),
       );
     } else {
       
