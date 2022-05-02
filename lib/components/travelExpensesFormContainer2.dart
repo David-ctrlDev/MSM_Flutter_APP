@@ -20,11 +20,11 @@ class FormContainer2 extends StatefulWidget {
 
 List<DataColumn> dataTableColumns = [
   
+  
   DataColumn(
-          numeric: true,
-          label: Text(
-            'ID',
-            style: TextStyle(fontStyle: FontStyle.italic),
+        
+          label: Icon(
+           Icons.flag_rounded,color:Colors.white,
           ),
         ),
   DataColumn(
@@ -43,7 +43,7 @@ List<DataColumn> dataTableColumns = [
         DataColumn(
         
           label: Icon(
-           Icons.flag_rounded,color:Colors.white,
+           Icons.delete,color:Colors.white,
           ),
         ),
 ];
@@ -87,8 +87,11 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
 
 
 
+
   Widget build(BuildContext context) {
-    return (Container(
+    return (
+      
+      Container(
       width:MediaQuery.of(context).size.width ,
       child: Column(
         children: [AnimatedBuilder(
@@ -106,35 +109,9 @@ class _FormContainer2 extends State<FormContainer2> with SingleTickerProviderSta
         child: Text("Agregar Destino",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           )),
+          
         myDatatable(),
-        Visibility(
-          visible: visibility,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-            shape: CircleBorder(),
-            padding: EdgeInsets.all(15),),
-            child: Icon(Icons.delete),
-              onPressed: () {
-                for (var i in selectedDestinations){
-                 
-                  destinationListAdd.removeWhere(
-                    (item) => item['id'] == i['id']);
-                  selectedDestinations.remove(i);
-                  dataTableRows.remove(i);
         
-                  setState(() {
-                    destinationListAdd = destinationListAdd;
-                    dataTableRows = dataTableRows;
-                    selectedDestinations = selectedDestinations;
-                    visibility = !visibility;
-                  });
-        
-                
-                }
-                
-              },
-            ),
-        ),
           
      ])));
       
@@ -575,16 +552,23 @@ DataTable myDatatable(){
 
 return(
   DataTable(
+    border: TableBorder.all(
+            width: 1.0,
+            color: kPrimaryColor.withAlpha(70),
+            borderRadius: BorderRadius.circular(10),
+            ),
     dividerThickness: 2,
     headingTextStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
     showBottomBorder: true,
     checkboxHorizontalMargin: 10,
-    showCheckboxColumn: true,
+    showCheckboxColumn: false,
     headingRowColor:MaterialStateProperty.all(kPrimaryColor),
     columnSpacing: 15,
     columns: dataTableColumns,
     rows: getRows(dataTableRows),
-    decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),), 
+    decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),),
+    
+  
   ));
 }
 
@@ -597,13 +581,34 @@ List<DataRow> getRows(List dataTableRows)=>dataTableRows.map((item)=>DataRow(
        
     final isAdding = isSelected !=null && isSelected;
     isAdding? selectedDestinations.add(item): selectedDestinations.remove(item);
+        for (var i in selectedDestinations){
+                 
+                  destinationListAdd.removeWhere(
+                    (item) => item['id'] == i['id']);
+                  selectedDestinations.remove(i);
+                  dataTableRows.remove(i);
+        
+                  setState(() {
+                    destinationListAdd = destinationListAdd;
+                    dataTableRows = dataTableRows;
+                    selectedDestinations = selectedDestinations;
+                    visibility = !visibility;
+                  });
+        
+                
+                }
 
   }),
   cells: [
-  DataCell(Text(item['id'])),
-  DataCell(Text(item['country'])),
-  DataCell(Text(item['city'])),
-  DataCell((item['flag'])),
+  
+  DataCell((item['flag']),
+  onTap:() => null),
+  DataCell(Text(item['country']),
+  onTap:() => null),
+  DataCell(Text(item['city']),
+  onTap:() => null),
+  DataCell(Icon(Icons.delete)),
+ 
 ])).toList();
 
 void addDestinationListAdd(
@@ -627,7 +632,6 @@ fund){
     "city"   : _valueChangedCity,
     "flag"   : Image.asset('assets/images/flags/$_valueChangedCountry.png',width: 32,) 
   });
-  
    destinationListAdd.add(
     {
       "id"                  : tableID.toString(),

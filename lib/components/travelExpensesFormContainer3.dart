@@ -33,9 +33,15 @@ List<DataColumn> dataTableColumns = [
             style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
-        DataColumn(
+  DataColumn(
           label: Icon(
            Icons.airplanemode_active,color:Colors.white,
+          ),
+        ),
+  DataColumn(
+        
+          label: Icon(
+           Icons.delete,color:Colors.white,
           ),
         ),
 ];
